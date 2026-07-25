@@ -1,13 +1,13 @@
 ---
-title: 流量分析
-date: 2026-07-25
+title: 我的第一篇文章
 published: 2026-07-25
-description: 流量分析学习
-image: ./cover.png
-draft: false
+description: 这是文章的简短描述
+image:
 tags:
+category:
+draft: false
 ---
-## ##0.学习信息
+## 0.学习信息
 【【CTF合辑】MISC-流量分析题大集合(第一辑)】 https://www.bilibili.com/video/BV1r5411h7aw/?share_source=copy_web&vd_source=f30b943bbd8c8a86c24e6fbcc470198c
 [3.流量日志分析分类/1.基础入门/key.pcapng · 风二西/CTF流量题大集合 - 码云 - 开源中国](https://gitee.com/fengerxi/large-set-of-ctf-flow-problems/blob/master/3.%E6%B5%81%E9%87%8F%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E5%88%86%E7%B1%BB/1.%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/key.pcapng)
 【金山文档 | WPS云文档】 CTF流量分析基础入门
