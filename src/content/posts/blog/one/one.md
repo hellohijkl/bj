@@ -1,7 +1,7 @@
 ---
 title: 流量分析
-date: 2026-07-25
-published: 2026-07-25
+date: 2026-07-26
+published: 2026-07-26
 description: 学习
 image: "./cover.png"
 draft: false
@@ -36,6 +36,7 @@ flag存放在zip rar tar.gz 7z里
 压缩包可能会遇到伪加密情况
 [CTF中伪加密ZIP文件解析与解密方法-CSDN博客](https://blog.csdn.net/xiaozhaidada/article/details/124538768)
 ## 4.ASCLL表
+https://blog.csdn.net/jiayoudangdang/article/details/79828853
 不可打印字符.的ascll码是退格
 ## 5.蓝牙协议
 统计->协议分级->OBEX Protocol（蓝牙里面传输文件的协议）->作为过滤器应用->选中
@@ -57,3 +58,4 @@ cmd
 tshark -r a.pcapng -T fields -e usbhid.data > usbdata.txt
 ```
 a.pcapng可替换流量包
+## 7.
