@@ -1,11 +1,11 @@
 ---
-title: 我的第一篇文章
+title: 流量分析
+date: 2026-07-25
 published: 2026-07-25
-description: 这是文章的简短描述
-image:
-tags:
-category:
+description: 学习
+image: "./cover.png"
 draft: false
+tags: ["misc"]
 ---
 ## 0.学习信息
 【【CTF合辑】MISC-流量分析题大集合(第一辑)】 https://www.bilibili.com/video/BV1r5411h7aw/?share_source=copy_web&vd_source=f30b943bbd8c8a86c24e6fbcc470198c
