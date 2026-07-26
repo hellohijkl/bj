@@ -13,6 +13,9 @@ tags: ["misc"]
 【金山文档 | WPS云文档】 CTF流量分析基础入门
 https://www.kdocs.cn/l/csbK8Ahqtp4f
 
+### 题目
+https://github.com/hellohijkl/-/tree/main/%E6%B5%81%E9%87%8F
+
 ## 1.flag明文
 Ctrl+f 弹出搜索框，分组字节流，字符串，直接搜索flag/flag{
 追踪流不同，结果不同
@@ -41,9 +44,10 @@ https://blog.csdn.net/jiayoudangdang/article/details/79828853
 ## 5.蓝牙协议
 统计->协议分级->OBEX Protocol（蓝牙里面传输文件的协议）->作为过滤器应用->选中
 /直接过滤obex
-## 6.usb键盘流量
+## 6.usb键盘和鼠标流量
 ### 参考
 https://blog.csdn.net/xcellencw/article/details/145270632?fromshare=blogdetail&sharetype=blogdetail&sharerId=145270632&sharerefer=PC&sharesource=hellohijkl&sharefrom=from_link
+https://blog.csdn.net/ON_Zero/article/details/130528679?fromshare=blogdetail&sharetype=blogdetail&sharerId=130528679&sharerefer=PC&sharesource=hellohijkl&sharefrom=from_link
 ### tshark指令前置
 1. 找到 Wireshark 安装文件夹（含 tshark.exe 的目录）
 2. 此电脑 → 右键属性 → 高级系统设置 → 环境变量
@@ -51,11 +55,26 @@ https://blog.csdn.net/xcellencw/article/details/145270632?fromshare=blogdetail&s
     
     `C:\Program Files\Wireshark`
 4. 全部窗口确定，**关闭当前 CMD 重新打开**，再执行你原来的命令：
+#### 键盘
 
 cmd
-
 ```
-tshark -r a.pcapng -T fields -e usbhid.data > usbdata.txt
+tshark -r a.pcap -T fields -e usbhid.data > usbdata.txt
 ```
 a.pcapng可替换流量包
-## 7.
+#### 鼠标
+
+```
+tshark -r b.pcap -T fields -e usbhid.data | sed '/^\s*$/d' > usbdata.txt
+```
+##### gnuplot
+gnuplot->plot ""
+
+## 7.ssl流量
+编辑->首选项->Protocols->TLS/SSL->选中加载密钥(出现了http,过滤查找)
+## 8.ARCHPR工具
+https://pan.baidu.com/s/1g1S1EbtZhY-F3MhbPzO4qQ 提取码: zrec
+## 9.CTF工具-破空_flag查找工具3.3
+https://gitcode.com/open-source-toolkit/0a8a3?utm_source=tools_gitcode&index=bottom&type=card&&uuid_tt_dd=10_18661813840-1760433311904-100400&isLogin=1&from_id=142973285&from_link=400cd208904cba75f1fab52ca8616ed4
+## 10.
+27fc分段传输，
