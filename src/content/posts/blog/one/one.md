@@ -13,7 +13,7 @@ tags: ["misc"]
 【金山文档 | WPS云文档】 CTF流量分析基础入门
 https://www.kdocs.cn/l/csbK8Ahqtp4f
 
-### 题目
+### 资料
 https://github.com/hellohijkl/-/tree/main/%E6%B5%81%E9%87%8F
 
 ## 1.flag明文
@@ -67,14 +67,41 @@ a.pcapng可替换流量包
 ```
 tshark -r b.pcap -T fields -e usbhid.data | sed '/^\s*$/d' > usbdata.txt
 ```
-##### gnuplot
+##### gnuplot画图工具
 gnuplot->plot ""
 
 ## 7.ssl流量
 编辑->首选项->Protocols->TLS/SSL->选中加载密钥(出现了http,过滤查找)
-## 8.ARCHPR工具
+## 8.ARCHPR工具(爆破)
 https://pan.baidu.com/s/1g1S1EbtZhY-F3MhbPzO4qQ 提取码: zrec
 ## 9.CTF工具-破空_flag查找工具3.3
 https://gitcode.com/open-source-toolkit/0a8a3?utm_source=tools_gitcode&index=bottom&type=card&&uuid_tt_dd=10_18661813840-1760433311904-100400&isLogin=1&from_id=142973285&from_link=400cd208904cba75f1fab52ca8616ed4
-## 10.
-27fc分段传输，
+## 10.带密码的压缩包
+### TCP的标志位
+TCP流中的27fc表示分段传输，所以在TCP流中压缩需要手动去掉标志位，但在HTTP流中会自动去掉标志位，所以在HTTP流中可以直接提取压缩包，再用010去掉菜刀位（Rar前面的）保存
+### 针对５.０以上的rar文件的爆破
+在rar的安装目录找到rar.exe，运行脚本
+```
+＃　—＊—　coding: utf-8 —＊—
+import subprocess
+rar_name=""
+#载入字典
+with open('字典名','r') as f:
+    for p in f.readlines():
+        cmd = "rar.exe e {0} -y -p{1}".format(rar_name,p.strip())
+        r = subprocess.getstausoutput(cmd)
+        print(r)
+        # print(r[0])
+        if r[0] == 0:
+            print("pass = {}".format(p.strip()))
+            break
+```
+## 11.数据包中的线索
+统计->HTTP->请求->/fenxi.php(过滤http,找到返回包，显示分组字节流，解码为base64,显示为图像)
+## 12.在流量包中找压缩包密码
+1.直接搜索password
+2.跟踪TCP流，找
+3.找到过滤当前TCP流和HTTP流
+## 13.getshell
+过滤TCP并追踪，反弹的默认装置4444
+## 14.sqltest
