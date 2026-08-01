@@ -1,7 +1,7 @@
 ---
 title: MISC
 published: 2026-08-02
-description: 这是文章的简短描述
+description: wp
 image: ./cover.jpg
 tags: [MISC]
 category: MISC
