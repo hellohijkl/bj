@@ -1,7 +1,10 @@
 ---
-title: "测试文章"
-published: 2026-08-01
-tags: ["测试"]
-description: "文章简介"
+title: MISC
+published: 2026-08-02
+description: 这是文章的简短描述
+image: ./cover.jpg
+tags: [MISC]
+category: MISC
+draft: false
 ---
 笔记
