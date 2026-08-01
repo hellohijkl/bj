@@ -1,10 +1,7 @@
 ---
-title: "MISC"
-date: 2026-08-02
-published: 2026-08-02
-description: 学习
-image: "./cover.png"
-draft: false
-tags: ["misc"]
+title: "测试文章"
+published: 2026-08-01
+tags: ["测试"]
+description: "文章简介"
 ---
 笔记
