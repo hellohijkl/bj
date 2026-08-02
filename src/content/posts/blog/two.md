@@ -7,6 +7,7 @@ tags: [MISC]
 category: MISC
 draft: false
 ---
+
 ## 1.snake
 1.下载附件，解压得到一张snake的图片。
 2.拿到图片观察，没有直接看到flag，猜测是压缩包，binwalk -e snake.jpg
