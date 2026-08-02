@@ -104,4 +104,4 @@ with open('字典名','r') as f:
 3.找到过滤当前TCP流和HTTP流
 ## 13.getshell
 过滤TCP并追踪，反弹的默认装置4444
-## 14.sqltest
+
