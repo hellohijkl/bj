@@ -80,4 +80,26 @@ data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAYAAAB12js8AAAAAXNSR0IArs
 2. 搜索flag，过滤出TCP流，追踪一下发现flag
 3. flag{da73d88936010da1eeeb36e945ec4b97}
 ## 7.荷兰宽带数据泄露
-1. 
+1. 下载附件，得到一个bin文件
+#### bin
+1. Bin 文件是最纯粹的二进制机器代码, 或者说是"顺序格式"。按照assembly code顺序翻译成binary machine code，内部没有地址标记。Bin是直接的内存映象表示，二进制文件大小即为文件所包含的数据的实际大小。 BIN文件就是直接的二进制文件，一般用编程器烧写时从00开始，而如果下载运行，则下载到编译时的地址即可。可以直接在裸机上运行。
+2. https://blog.csdn.net/hfut_zhanghu/article/details/123064359?ops_request_misc=&request_id=&biz_id=102&utm_term=bin&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-123064359.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187
+2. 用RouterPassView打开，搜索Username，得到053700357621
+3. flag{053700357621}
+### RouterPassView
+https://link.gitcode.com/i/e7c71f64812bbf639f40eec7e0c77d86?uuid_tt_dd=10_18661813840-1760433311904-100400&isLogin=1&from_id=148276146
+### 类似
+https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc=&request_id=&biz_id=102&utm_term=RouterPassView&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-142511625.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187
+## 8.你竟然赶我走
+1. 下载附件，得到一个图片
+2. 尝试binwalk -e biubiu.jpg，没有压缩包，丢010看
+3. 搜索flag，得到flag
+3. flag{stego_is_s0_bor1ing}
+## 9.zip伪加密
+1. 下载附件，得到一个zip
+2. 题目提示是zip伪加密，用010打开zip，将“50 4B 03 04 14 00 09 00”改为“50 4B 03 04 14 00 00 00”另存并打开得到flag
+3. flag{Adm1N-B2G-kU-SZIP}
+## 10.wireshark
+1. 下载附件，得到一个流量包
+2. 题目提示黑客通过wireshark抓到管理员登陆网站的一段流量包（管理员的密码即是答案) ,我们直接搜索password，得到flag
+3. flag{ffb7567a1d4f4abdffdb54e022f8facd}
