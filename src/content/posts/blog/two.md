@@ -129,7 +129,6 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 3. flag{209acebf6324a09671abc31c869de72c}
 ## 12.另外一个世界
 1. 下载附件，得到一张图片
-![monster.jpg](https://tu.helloblog.de5.net/file/1786259100170_monster.jpg)
 2. 放到010，找到一串二进制
 ![image.png](https://tu.helloblog.de5.net/file/1786259596437_image.png)
 二进制转ASCLL码得到
