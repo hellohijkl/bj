@@ -150,5 +150,73 @@ savebin，后缀改为png，
 ![flag.png](https://tu.helloblog.de5.net/file/1786260299583_flag.png)
 得到一张二维码扫码得到
 ![image.png](https://tu.helloblog.de5.net/file/1786260273876_image.png)
-3. flag{1sb_i4_s0_Ea4y}
+3. flag{1sb_i4_s0_Ea4y}}
+## 14.voip
+1. 下载附件，得到一个流量包
+2. 
+![image.png](https://tu.helloblog.de5.net/file/1786262620542_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786262699339_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786262752529_image.png)
+3. 听出flag{9001IVR}
+### VoIP
+VoIP(Voice over  Internet Protocol)，ip语音协议。音频与视频聊天通过将语音信号转换为数字数据并通过互联网或局域网进行传输，实现远程通信，提高了通信效率。我们常用的QQ通话，微信通话都是。
+## 15.金三胖
+1. 下载附件，得到一个gif
+2. 观看git,发现flag在帧数里，用脚本分离帧数得到
+![image.png](https://tu.helloblog.de5.net/file/1786269773261_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786269850820_image.png)
+3. flag{he11ohongke}
+### extract_gif.py
+```
+from PIL import Image
+import os
+
+gif_path = "aaa.gif"
+out_folder = "gif_frames"
+os.makedirs(out_folder, exist_ok=True)
+
+img = Image.open(gif_path)
+total = img.n_frames
+print(f"总帧数: {total}")
+
+for i in range(total):
+    img.seek(i)
+    frm = img.copy().convert("RGBA")
+    frm.save(f"{out_folder}/frame_{i:04d}.png")
+
+print(f"全部帧已输出到 {out_folder}/")
+```
+
+## 16.大白
+1. 下载附件，得到一个不完整的图片(修改宽高)
+![image.png](https://tu.helloblog.de5.net/file/1786265915376_image.png)
+2. 用010打开，第二行前4位是宽，4-8位是高，改高点
+![image.png](https://tu.helloblog.de5.net/file/1786265857657_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786265943144_image.png)
+3. flag{He1l0_d4_ba1}
+
+## 17.基础破解
+1. 下载附件，得到一个压缩包
+2. 题目提示4位数字爆破，爆破得![image.png](https://tu.helloblog.de5.net/file/1786270299223_image.png)
+3. 得到一串base64，解密得到flag
+![image.png](https://tu.helloblog.de5.net/file/1786270364601_image.png)
+4. flag{70354300a5100ba78068805661b93a5c}
+
+## 18.ningen
+1. 下载附件，得到一张图片
+2. 尝试分离
+![image.png](https://tu.helloblog.de5.net/file/1786270797633_image.png)
+3. 得到一个压缩包，题目提示4位数字爆破得
+![image.png](https://tu.helloblog.de5.net/file/1786270859010_image.png)
+4. flag{b025fc9ca797a67d2103bfbc407a6d5f}
+## 19.乌镇峰会种图
+1. 下载附件，得到一张图片
+2. 尝试分离没有附加文件，用010打开，搜索flag
+![image.png](https://tu.helloblog.de5.net/file/1786271176573_image.png)
+3. flag{97314e7864a8f62627b26f3f998c37f1}
+## 20.隐藏的钥匙
+1. 下载附件，得到一张图片
+2. 同19
+![image.png](https://tu.helloblog.de5.net/file/1786272009735_image.png)
+3. flag{377cbadda1eca2f2f73d36277781f00a}
 
