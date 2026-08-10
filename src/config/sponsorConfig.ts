@@ -27,7 +27,7 @@ export const sponsorConfig: SponsorConfig = {
 			icon: "fa7-brands:alipay",
 			// 收款码图片路径（需要放在 public 目录下）
 			qrCode: "/assets/images/sponsor/alipay.png",
-			link: "",
+			link: "![1ba7d8558704f74572ff72c721a50387.jpg](https://tu.helloblog.de5.net/file/1786337254848_1ba7d8558704f74572ff72c721a50387.jpg)",
 			description: "使用 支付宝 扫码打赏",
 			enabled: true,
 		},
@@ -35,45 +35,20 @@ export const sponsorConfig: SponsorConfig = {
 			name: "微信",
 			icon: "fa7-brands:weixin",
 			qrCode: "/assets/images/sponsor/wechat.png",
-			link: "",
+			link: "![b32386ab6083cc6be738e8bf25a1143c.png](https://tu.helloblog.de5.net/file/1786337246298_b32386ab6083cc6be738e8bf25a1143c.png)",
 			description: "使用 微信 扫码打赏",
 			enabled: true,
 		},
-		{
-			name: "ko-fi",
-			icon: "simple-icons:kofi",
-			qrCode: "",
-			link: "https://ko-fi.com/cuteleaf",
-			description: "Buy a Coffee for Firefly",
-			enabled: true,
-		},
-		{
-			name: "爱发电",
-			icon: "simple-icons:afdian",
-			qrCode: "",
-			link: "https://ifdian.net/a/cuteleaf",
-			description: "通过 爱发电 进行打赏",
-			enabled: true,
-		},
+		
+		
 	],
 
 	// 打赏者列表（可选）
 	sponsors: [
 		// 示例：已实名打赏者
-		{
-			name: "夏叶",
-			avatar:
-				"https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-			amount: "¥50",
-			date: "2025-10-01",
-		},
+		
 
 		// 示例：匿名打赏者
-		{
-			name: "匿名用户",
-			// avatar: "",
-			amount: "¥20",
-			date: "2025-10-01",
-		},
+		
 	],
 };
