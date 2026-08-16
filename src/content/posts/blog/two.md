@@ -272,5 +272,108 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 ![image.png](https://tu.helloblog.de5.net/file/1786874088855_image.png)
 ![image.png](https://tu.helloblog.de5.net/file/1786875061901_image.png)
 6. 拼接flag{N7F5_AD5_i5_funny!}
+## 23.[BJDCTF2020]鸡你太美
+1. 下载附件，得到一个压缩包
+2. 有篮球.gif和篮球副本.gif，篮球副本.gif打不开，与篮球.gif对照，发现少了头文件“47 49 46 38”，用010修复
+![image.png](https://tu.helloblog.de5.net/file/1786878482215_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786878569267_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786878396075_image.png)
+3. flag{zhi_yin_you_are_beautiful}
+## 24.[BJDCTF2020]纳尼
+1. 下载附件，得到一张图片
+2. 打不开，用010打开，发现缺少头文件“47 49 46 38”
+![image.png](https://tu.helloblog.de5.net/file/1786887998239_image.png)
+3. 观看git,发现flag在帧数里，用脚本分离帧数得到
+![image.png](https://tu.helloblog.de5.net/file/1786887782333_image.png)![image.png](https://tu.helloblog.de5.net/file/1786887865358_image.png)
+4. CTF{wang_bao_qiang_is_sad}
+## 25.[BJDCTF2020]一叶障目
+1. 下载附件，得到一张图片
+2. 用脚本爆破宽高
+![image.png](https://tu.helloblog.de5.net/file/1786890242910_image.png)
+![fixed.png](https://tu.helloblog.de5.net/file/1786890351573_fixed.png)
+3. flag{66666}
+### 宽高.py
+```
+#coding=utf-8
+import zlib
+import struct
+
+file = "1.png"
+fr = open(file,'rb').read()
+
+# 12:29  包含 IHDR(4字节) + IHDR的13字节数据，一共17字节
+data = bytearray(fr[12:29])
+crc_target = int.from_bytes(fr[29:33], byteorder='big')
+
+found_w = 0
+found_h = 0
+
+# 爆破宽高
+for w in range(4096):
+    for h in range(4096):
+        # data[0:4] 是 b"IHDR"不动；data[4:8]宽；data[8:12]高
+        data[4:8] = struct.pack(">I", w)
+        data[8:12] = struct.pack(">I", h)
+        crc_calc = zlib.crc32(data) & 0xffffffff
+        if crc_calc == crc_target:
+            found_w = w
+            found_h = h
+            print(f"找到 width={w}, height={h}")
+            break
+    if found_w != 0:
+        break
+
+# 写回原文件
+res = bytearray(fr)
+res[16:20] = struct.pack(">I", found_w)
+res[20:24] = struct.pack(">I", found_h)
+
+with open("fixed.png", "wb") as fout:
+    fout.write(res)
+
+print("输出 fixed.png")
+```
+## 26.[HBNIS2018]来题中等的吧
+1. 下载附件，得到一张图片
+![附件5.png](https://tu.helloblog.de5.net/file/1786891705717_附件5.png)
+2. 摩斯密码“.- .-.. .--. .... .- .-.. .- -...”
+![image.png](https://tu.helloblog.de5.net/file/1786891924560_image.png)
+3. flag{alphalab}
+## 27.文件中的秘密
+1. 下载附件，得到一张图片
+![图片中的秘密.png](https://tu.helloblog.de5.net/file/1786892303830_图片中的秘密.png)
+2. 用binwalk，无压缩包，用010，没发现什么
+3. 找呀找呀，查看属性
+![image.png](https://tu.helloblog.de5.net/file/1786892417827_image.png)
+4. flag{870c5a72806115cb5439345d8b014396}
+## 28.从娃娃抓起
+1. 题目描述：伟人的一句话，标志着一个时代的开始。那句熟悉的话，改变了许多人的一生，为中国三十年来计算机产业发展铺垫了道路。两种不同的汉字编码分别代表了汉字信息化道路上的两座伟大里程碑。请将你得到的话转为md5提交，md5统一为32位小写。
+2. 
+1. "0086 1562 2535 5174"
+![image.png](https://tu.helloblog.de5.net/file/1786893116608_image.png)
+2. "bnhn s wwy vffg vffg rrhy fhnv"五笔->“也 要 从 娃 娃 抓 起”。合起来是"人工智能也要从娃娃抓起"MD5得到“3b4b5dccd2c008fe7e2664bd1bc19292”![image.png](https://tu.helloblog.de5.net/file/1786894095336_image.png)
+3. flag{3b4b5dccd2c008fe7e2664bd1bc19292}
+## 29.小易的U盘
+1. 下载附件，得到一个压缩包
+2. 发现一个flag.txt
+![image.png](https://tu.helloblog.de5.net/file/1786895101599_image.png)
+提示在exe里面，发现
+![image.png](https://tu.helloblog.de5.net/file/1786895158478_image.png)
+用ida打开发现flag
+![image.png](https://tu.helloblog.de5.net/file/1786895009339_image.png)
+3. flag{29a0vkrlek3eu10ue89yug9y4r0wdu10}
+## 30.来首歌吧
+1. 下载附件，得到一个压缩包，里面一段音频
+2. 用audacity打开
+![image.png](https://tu.helloblog.de5.net/file/1786895572099_image.png)
+摩斯密码“..... -... -.-. ----. ..--- ..... -.... ....- ----. -.-. -... ----- .---- ---.. ---.. ..-. ..... ..--- . -.... .---- --... -.. --... ----- ----. ..--- ----. .---- ----. .---- -.-.
+”
+![image.png](https://tu.helloblog.de5.net/file/1786895562202_image.png)
+3. flag{5BC925649CB0188F52E617D70929191C
+}
+
+
+
+
 
 
