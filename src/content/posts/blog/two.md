@@ -218,5 +218,59 @@ print(f"全部帧已输出到 {out_folder}/")
 2. 同19
 ![image.png](https://tu.helloblog.de5.net/file/1786272009735_image.png)
 3. flag{377cbadda1eca2f2f73d36277781f00a}
+## 21.梅花香之苦寒来
+1. 下载附件，得到一张图片
+2. 用010打开，发现末尾有一串hex
+![image.png](https://tu.helloblog.de5.net/file/1786870033004_image.png)
+3. 将这串hex转成坐标
+![image.png](https://tu.helloblog.de5.net/file/1786870126998_image.png)
+4. 用脚本将坐标绘制成图
+```
+import matplotlib
+matplotlib.use('Agg')   # WSL无GUI，必须加这行，禁用弹窗
+import matplotlib.pyplot as plt
+
+points = []
+with open("point.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        if not line:
+            continue
+        xy = line.strip("()").split(",")
+        x = float(xy[0])
+        y = float(xy[1])
+        points.append((x, y))
+
+x_list = [p[0] for p in points]
+y_list = [p[1] for p in points]
+
+plt.scatter(x_list, y_list, s=2, c="black")
+plt.axis("equal")
+plt.axis("off")
+
+plt.savefig("qrcode.png", dpi=300, bbox_inches="tight", pad_inches=0)
+plt.close()
+print("已生成 qrcode.png")
+```
+![qrcode.png](https://tu.helloblog.de5.net/file/1786871224003_qrcode.png)
+5. 扫码得到flag{40fc0a979f759c8892f4dc045e28b820}
+## 22.面具下的flag
+1. 下载附件，得到一张图片
+2. binwalk -e mianju.jpg
+3. 打开压缩包，74DFE.zip->flag.vmdk->key_part_one和key_part_two
+4. 打开key_part_one->NUL，发现“+++++ +++++ [->++ +++++ +++<] >++.+ +++++ .<+++ [->-- -<]>- -.+++ +++.<
+++++[ ->+++ +<]>+ +++.< +++++ +[->- ----- <]>-- ----- --.<+ +++[- >----
+<]>-- ----- .<+++ [->++ +<]>+ +++++ .<+++ +[->- ---<] >-.<+ +++++ [->++
+++++< ]>+++ +++.< +++++ [->-- ---<] >---- -.+++ .<+++ [->-- -<]>- ----- .<”
+![image.png](https://tu.helloblog.de5.net/file/1786873394718_image.png)
+5. 打开key_part_two->where_is_flag_part_two.txt
+![image.png](https://tu.helloblog.de5.net/file/1786873497020_image.png)
+Oops提示Ook，Ook 编码藏在 NTFS备用数据流，用记事本直接打开看不到
+```
+more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
+```
+![image.png](https://tu.helloblog.de5.net/file/1786874088855_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1786875061901_image.png)
+6. 拼接flag{N7F5_AD5_i5_funny!}
 
 
