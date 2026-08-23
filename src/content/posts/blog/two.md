@@ -371,9 +371,72 @@ print("输出 fixed.png")
 ![image.png](https://tu.helloblog.de5.net/file/1786895562202_image.png)
 3. flag{5BC925649CB0188F52E617D70929191C
 }
+## 31.黑客帝国
+1. 下载附件，得到一个压缩包
+2. 解压得到一个文本，发现“52 61 72 21 1a 07 00”是rar的压缩文件
+- ZIP：`50 4B 03 04`
+- GZIP：`1F 8B 08`
+- RAR4：`52 61 72 21 1A 07 00`
+- RAR5：`52 61 72 21 1A 07 01 00`
+3. 利用脚本将16进制数据转成二进制压缩包，爆破得到压缩包密码“3690”
+![image.png](https://tu.helloblog.de5.net/file/1787470037553_image.png)
+4. 打开图片发现提示文件格式错误，用010打开，发现文件末尾为“FF D9”，文件开头应为“FF D8”，修改文件头，发现flag
+![image.png](https://tu.helloblog.de5.net/file/1787470518610_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1787470660515_image.png)
+- JPEG 文件头：`FF D8 FF`（文件起始）
+- JPEG 文件尾：`FF D9`（文件结束标记）
+5. flag{57cd4cfd4e07505b98048ca106132125}
+### 16进制数据转二进制压缩包脚本
+```
+import binascii
 
+hex_data='txt文件中16进制数据'
+out=open('黑客帝国.rar','wb')
+out.write(binascii.unhexlify(hex_data))
+out.close()
+```
+## 32.[MRCTF2020]你能看懂音符吗
+1. 下载附件，得到一个压缩包
+2. 压缩包异常，用010打开，发现头文件错了，应该是“52 61”
+![image.png](https://tu.helloblog.de5.net/file/1787470998506_image.png)
+3. 打开发现，什么都没有，用010打开，发现“50 4B 03 04”是zip，更改后缀
+![image.png](https://tu.helloblog.de5.net/file/1787471195881_image.png)
+4. 然后找，最后在word文件夹中document.xml发现音乐符号文本加密：“♭♯♪‖¶♬♭♭♪♭‖‖♭♭♬‖♫♪‖♩♬‖♬♬♭♭♫‖♩♫‖♬♪♭♭♭‖¶∮‖‖‖‖♩♬‖♬♪‖♩♫♭♭♭♭♭§‖♩♩♭♭♫♭♭♭‖♬♭‖¶§♭♭♯‖♫∮‖♬¶‖¶∮‖♬♫‖♫♬‖♫♫§=”
+![image.png](https://tu.helloblog.de5.net/file/1787472069212_image.png)
+5. flag{thEse_n0tes_ArE_am@zing~}
 
+## 33.[HBNIS2018]caesar
+1. 下载附件，得到一个文本
+![image.png](https://tu.helloblog.de5.net/file/1787472300703_image.png)
+2. 凯撒解密得到flag
+![image.png](https://tu.helloblog.de5.net/file/1787472451084_image.png)
+### 凯撒密码
+https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogdetail&sharetype=blogdetail&sharerId=121729142&sharerefer=PC&sharesource=hellohijkl&sharefrom=from_link
+3. flag{flagiscaesar}
 
+## 34.[HBNIS2018]低个头
+1. 下载附件，得到一个文本
+![image.png](https://tu.helloblog.de5.net/file/1787472878307_image.png)
+2. 低头看键盘
+![image.png](https://tu.helloblog.de5.net/file/1787473230497_image.png)
+3. flag{CTF}
 
+## 35.[GXYCTF2019]佛系青年
+1. 下载附件，得到一个压缩包
+2. 打开压缩包，fo.txt解压失败，可能是zip伪加密，用010打开压缩包
+3. 查找“PK”，发现zip伪加密
+![image.png](https://tu.helloblog.de5.net/file/1787479211564_image.png)
+4. 打开fo.txt，得到“佛曰：遮等諳勝能礙皤藐哆娑梵迦侄羅哆迦梵者梵楞蘇涅侄室實真缽朋能。奢怛俱道怯都諳怖梵尼怯一罰心缽謹缽薩苦奢夢怯帝梵遠朋陀諳陀穆諳所呐知涅侄以薩怯想夷奢醯數羅怯諸”，解密后得到flag
+![image.png](https://tu.helloblog.de5.net/file/1787479591189_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1787479749942_image.png)
+5. flag{w0_fo_ci_Be1}
 
+## 36.[BJDCTF2020]just_a_rar
+1. 下载附件，得到一个压缩包
+2. 压缩包名字提示4位数爆破
+![image.png](https://tu.helloblog.de5.net/file/1787480960678_image.png)
+3. 得到一张图片，查看属性，得到flag
+![flag.jpg](https://tu.helloblog.de5.net/file/1787481065171_flag.jpg)
+![image.png](https://tu.helloblog.de5.net/file/1787481145654_image.png)
+4. flag{Wadf_123}
 
