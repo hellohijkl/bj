@@ -378,6 +378,7 @@ print("输出 fixed.png")
 - GZIP：`1F 8B 08`
 - RAR4：`52 61 72 21 1A 07 00`
 - RAR5：`52 61 72 21 1A 07 01 00`
+![image.png](https://tu.helloblog.de5.net/file/1787497712694_image.png)
 3. 利用脚本将16进制数据转成二进制压缩包，爆破得到压缩包密码“3690”
 ![image.png](https://tu.helloblog.de5.net/file/1787470037553_image.png)
 4. 打开图片发现提示文件格式错误，用010打开，发现文件末尾为“FF D9”，文件开头应为“FF D8”，修改文件头，发现flag
@@ -440,3 +441,34 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 ![image.png](https://tu.helloblog.de5.net/file/1787481145654_image.png)
 4. flag{Wadf_123}
 
+## 37.FLAG
+1. 下载附件，得到一张图片
+2. 用stegsolve打开，注意到zip头文件，save bin保存成zip文件
+![image.png](https://tu.helloblog.de5.net/file/1787492386941_image.png)
+3. 运行程序，得到flag
+![image.png](https://tu.helloblog.de5.net/file/1787492780067_image.png)
+4. flag{dd0gf4c3tok3yb0ard4g41n~~~}
+
+## 38.假如给我三天光明
+1. 下载附件，得到一张图片
+![image.png](https://tu.helloblog.de5.net/file/1787493183649_image.png)
+2. 解密盲文，得到“kmdonowg”密钥打开压缩包
+![image.png](https://tu.helloblog.de5.net/file/1787493321665_image.png)
+3. 得到音频，用Audacity打开得到“-.-. - ..-. .-- .--. . .. ----- ---.. --... ...-- ..--- ..--.. ..--- ...-- -.. --..”
+![image.png](https://tu.helloblog.de5.net/file/1787493453970_image.png)
+4. 摩斯密码解密得到flag
+![image.png](https://tu.helloblog.de5.net/file/1787494419415_image.png)
+5. flag{wpei08732?23dz}
+
+## 39.神秘龙卷风
+1. 下载附件，得到一个压缩包
+2. 题目提示4位数字爆破
+![image.png](https://tu.helloblog.de5.net/file/1787494735863_image.png)
+3. 解密得到flag{e4bbef8bdf9743f8bf5b727a9f6332a8}
+![image.png](https://tu.helloblog.de5.net/file/1787494905645_image.png)
+
+## 40.[UTCTF2020]zero
+1. 下载附件，得到一个文本
+2. 题目提示零宽字符隐写，解密得到flag
+![image.png](https://tu.helloblog.de5.net/file/1787497373624_image.png)
+3. flag{whyNOT@sc11_4927aajbqk14}
