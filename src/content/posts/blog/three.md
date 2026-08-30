@@ -3,8 +3,8 @@ title: MoeCTF 2026wp
 published: 2026-08-30
 description: wp
 image: ./cover.jpg
-tags: 
-category: 
+tags: [wp]
+category: wp
 draft: false
 ---
 # 1.取证与安全杂项
