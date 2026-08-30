@@ -36,3 +36,13 @@ draft: false
 ![image.png](https://tu.helloblog.de5.net/file/1788077361011_image.png)
 3. 综合得到moectf{KWE_XIAOMI_0203}
 
+## 5.空白文档
+1. 下载附件，得到一个word文档，考察XOR
+![image.png](https://tu.helloblog.de5.net/file/1788078451224_image.png)
+2. 把word文档后缀改成zip
+3. 找到document.xml，发现一串base64，“AgkDChcDFBEOWhEAMFcVNg4cMABXXQQY”
+![image.png](https://tu.helloblog.de5.net/file/1788080747999_image.png)
+4. 先base64解密，再XOR得到moectf{wh3re_1s_my_f14g}
+![image.png](https://tu.helloblog.de5.net/file/1788080738057_image.png)
+
+## 6.
