@@ -45,4 +45,16 @@ draft: false
 4. 先base64解密，再XOR得到moectf{wh3re_1s_my_f14g}
 ![image.png](https://tu.helloblog.de5.net/file/1788080738057_image.png)
 
-## 6.
+# 2.二进制漏洞审计
+## 1.Pwn入门指北
+1. 
+
+# 3.Python沙箱逃逸
+
+# 4.现代密码学
+
+# 5.软件逆向工程
+
+# 6.Web安全与渗透测试
+
+# 7.开发与运维基础
