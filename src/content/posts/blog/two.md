@@ -11,11 +11,6 @@ draft: false
 ## 1.snake
 1. 下载附件，解压得到一张snake的图片。
 ![snake.jpg](https://tu.helloblog.de5.net/file/1786254720330_snake.jpg)
-[img]https://tu.helloblog.de5.net/file/1786254720330_snake.jpg[/img]
-<img src="https://tu.helloblog.de5.net/file/1786254720330_snake.jpg" alt="snake.jpg" width=100%>
-https://tu.helloblog.de5.net/file/1786254720330_snake.jpg
-.
-
 2. 拿到图片观察，没有直接看到flag，猜测是压缩包，binwalk -e snake.jpg
 ![image.png](https://tu.helloblog.de5.net/file/1786253822301_image.png)
 3. 得到一个压缩包，解压成功，得到两个文件：cipher、key。
