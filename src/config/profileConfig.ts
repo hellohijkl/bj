@@ -9,10 +9,10 @@ export const profileConfig: ProfileConfig = {
 	// avatar: "assets/images/avatar.avif",
     avatar: "https://tu.helloblog.de5.net/file/1788245385062_c722b895b298dc386f9914165629ccae.jpg",
 	// 名字
-	name: "Firefly",
+	name: "Nikki",
 
 	// 个人签名
-	bio: "Hello, I'm Firefly.",
+	bio: "Hello, I'm Nikki.",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons
