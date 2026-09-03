@@ -47,8 +47,11 @@ draft: false
 
 # 2.二进制漏洞审计
 ## 1.Pwn入门指北
-1. 
-
+1. 根据提示写脚本，本地测试成功，远程不行，未完待续
+![image.png](https://tu.helloblog.de5.net/file/1788433185240_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1788433150252_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1788433270650_image.png)
+![image.png](https://tu.helloblog.de5.net/file/1788438891049_image.png)
 # 3.Python沙箱逃逸
 
 # 4.现代密码学
