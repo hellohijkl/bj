@@ -27,7 +27,7 @@ export const sponsorConfig: SponsorConfig = {
 			icon: "fa7-brands:alipay",
 			// 收款码图片路径（需要放在 public 目录下）
 			qrCode: "/assets/images/sponsor/alipay.png",
-			link: "![1ba7d8558704f74572ff72c721a50387.jpg](https://tu.helloblog.de5.net/file/1786337254848_1ba7d8558704f74572ff72c721a50387.jpg)",
+			link: "![1ba7d8558704f74572ff72c721a50387.jpg](https://img.88800001.xyz/file/1786337254848_1ba7d8558704f74572ff72c721a50387.jpg)",
 			description: "使用 支付宝 扫码打赏",
 			enabled: true,
 		},
@@ -35,7 +35,7 @@ export const sponsorConfig: SponsorConfig = {
 			name: "微信",
 			icon: "fa7-brands:weixin",
 			qrCode: "/assets/images/sponsor/wechat.png",
-			link: "![b32386ab6083cc6be738e8bf25a1143c.png](https://tu.helloblog.de5.net/file/1786337246298_b32386ab6083cc6be738e8bf25a1143c.png)",
+			link: "![b32386ab6083cc6be738e8bf25a1143c.png](https://img.88800001.xyz/file/1786337246298_b32386ab6083cc6be738e8bf25a1143c.png)",
 			description: "使用 微信 扫码打赏",
 			enabled: true,
 		},

@@ -40,7 +40,7 @@ flag存放在zip rar tar.gz 7z里
 [CTF中伪加密ZIP文件解析与解密方法-CSDN博客](https://blog.csdn.net/xiaozhaidada/article/details/124538768)
 ## 4.ASCLL表
 https://blog.csdn.net/jiayoudangdang/article/details/79828853
-![ASCLL.png](https://tu.helloblog.de5.net/file/1786212210634_ASCLL.png)
+![ASCLL.png](https://img.88800001.xyz/file/1786212210634_ASCLL.png)
 不可打印字符.的ascll码是退格
 ## 5.蓝牙协议
 统计->协议分级->OBEX Protocol（蓝牙里面传输文件的协议）->作为过滤器应用->选中

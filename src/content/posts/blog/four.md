@@ -12,7 +12,7 @@ draft: false
 ### Day1
 #### BabyGo
 1. 题目描述
-![image.png](https://tu.helloblog.de5.net/file/1789563292477_image.png)
+![image.png](https://img.88800001.xyz/file/1789563292477_image.png)
 2. 附件main.go
 ```
 package main
@@ -87,24 +87,24 @@ func main() {
 
 ```
 4. 得到flag
-![image.png](https://tu.helloblog.de5.net/file/1789563915540_image.png)
+![image.png](https://img.88800001.xyz/file/1789563915540_image.png)
 #### Base套娃
 1. 题目提示Base套娃，并给了一串base64“MjlEcXlyTktTYkdUcnVSOW1EbkhRcmk2VUtlemdOWFg1SmRydEZHMmtCelRDUGF6UmFWMVlTWDZMZ2lGdGJiYktMaVROdGJRS3pSRlc2TTdYQ2FaYXBxOWZ4TUU0MlFLdzdp”
 2. base64解码
-![image.png](https://tu.helloblog.de5.net/file/1789565674845_image.png)
+![image.png](https://img.88800001.xyz/file/1789565674845_image.png)
 3. base58解码
-![image.png](https://tu.helloblog.de5.net/file/1789565687237_image.png)
+![image.png](https://img.88800001.xyz/file/1789565687237_image.png)
 4. base32解码
-![image.png](https://tu.helloblog.de5.net/file/1789565711406_image.png)
+![image.png](https://img.88800001.xyz/file/1789565711406_image.png)
 5. flag{af7bfd4a-7399-48ff-808d-0aa888ac708f}
 #### 抽奖盒
 1. 题目描述
-![image.png](https://tu.helloblog.de5.net/file/1789571494904_image.png)
+![image.png](https://img.88800001.xyz/file/1789571494904_image.png)
 2. 通过不断的抽，，base4解码得到flag{2140dd0e-5f40-4f47-ab99-4c20b988b980}
-![image.png](https://tu.helloblog.de5.net/file/1789571545194_image.png)
+![image.png](https://img.88800001.xyz/file/1789571545194_image.png)
 #### 抽奖盒Plus
 1. 题目描述
-![image.png](https://tu.helloblog.de5.net/file/1789572577823_image.png)
+![image.png](https://img.88800001.xyz/file/1789572577823_image.png)
 2. 根据题目写脚本
 ```
 import requests
@@ -129,6 +129,6 @@ for _ in range(1000):
             break
 
 ```
-![image.png](https://tu.helloblog.de5.net/file/1789573309258_image.png)
+![image.png](https://img.88800001.xyz/file/1789573309258_image.png)
 3. flag{1c66cb80-3f5e-40a1-92d3-7448be81539e}
  
