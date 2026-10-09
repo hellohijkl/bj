@@ -34,6 +34,14 @@ export default function rehypeFigure() {
 				imgProps.referrerpolicy = "no-referrer";
 			}
 
+			// Defer off-screen images so a long post does not queue every request at once.
+			if (imgProps.loading === undefined) {
+				imgProps.loading = "lazy";
+			}
+			if (imgProps.decoding === undefined) {
+				imgProps.decoding = "async";
+			}
+
 			// 获取 alt 属性
 			const alt = imgProps.alt;
 

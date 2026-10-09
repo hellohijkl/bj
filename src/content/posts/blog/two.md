@@ -16,11 +16,11 @@ https://ctf2.dasctf.com/dashboard/practice/b9bbb32f-f186-458f-b90b-12440c0f6aea?
 
 1. 下载附件，解压得到一张snake的图片。
 
-![snake.jpg](https://img.88800001.xyz/file/1786254720330_snake.jpg)
+![snake.jpg](/images/blog/1786254720330_snake.webp)
 
 2. 拿到图片观察，没有直接看到flag，猜测是压缩包，binwalk -e snake.jpg
 
-![image.png](https://img.88800001.xyz/file/1786253822301_image.png)
+![image.png](/images/blog/1786253822301_image.webp)
 
 3. 得到一个压缩包，解压成功，得到两个文件：cipher、key。
 
@@ -66,7 +66,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 最终得到flag：flag{who_knew_serpent_cipher_existed}
 
-![image.png](https://img.88800001.xyz/file/1786254129793_image.png)
+![image.png](/images/blog/1786254129793_image.webp)
 
 5. flag{who_knew_serpent_cipher_existed}
 
@@ -74,15 +74,15 @@ CTF{who_knew_serpent_cipher_existed}
 
 1. 下载附件，得到一个二维码
 
-![QR_code.png](https://img.88800001.xyz/file/1786254748297_QR_code.png)
+![QR_code.png](/images/blog/1786254748297_QR_code.webp)
 
 2. 扫描得到swpuctf{flag_is_not_here}
 
 3. binwalk -e QR_code，得到一个压缩包，提示密码是4位数字，用ARCHPR爆破得到7639,打开得到CTF{vjpw_wnoei}
 
-![image.png](https://img.88800001.xyz/file/1786254371379_image.png)
+![image.png](/images/blog/1786254371379_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786254486166_image.png)
+![image.png](/images/blog/1786254486166_image.webp)
 
 4. flag{vjpw_wnoei}
 
@@ -92,7 +92,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 2. 打开发现全是TCP流，追踪一下TCP流得到FLAG:385b87afc8671dee07550290d16a8071
 
-![image.png](https://img.88800001.xyz/file/1786254631527_image.png)
+![image.png](/images/blog/1786254631527_image.webp)
 
 3. flag{385b87afc8671dee07550290d16a8071}
 
@@ -100,7 +100,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 1. 下载附件，得到一张图片。
 
-![steg.png](https://img.88800001.xyz/file/1786254739454_steg.png)
+![steg.png](/images/blog/1786254739454_steg.webp)
 
 2. 图片提示“Look very closely ;)”及图片命名为steg.png(应该是图片隐写)
 
@@ -140,7 +140,7 @@ Bit Plane Order：RGB
 
 the secret key is: st3g0_saurus_wr3cks
 
-![image.png](https://img.88800001.xyz/file/1786254979159_image.png)
+![image.png](/images/blog/1786254979159_image.webp)
 
 4. 得到 Flag
 
@@ -158,9 +158,9 @@ https://blog.csdn.net/m0_75030189/article/details/136940462?ops_request_misc=ela
 
 3. 得到一串base64，data:image/jpg告诉我们这是一个图片，我们用工具(https://www.toolhelper.cn/Image/Base64?tab=image)得到一个二维码，用工具扫描二维码(https://www.toolhelper.cn/QRCode/Recognize?tab=image)得到KEY{dca57f966e4e4e31fd5b15417da63269}
 
-![image.png](https://img.88800001.xyz/file/1786255153381_image.png)
+![image.png](/images/blog/1786255153381_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786255218152_image.png)
+![image.png](/images/blog/1786255218152_image.webp)
 
 4. flag{dca57f966e4e4e31fd5b15417da63269}
 
@@ -176,7 +176,7 @@ data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAYAAAB12js8AAAAAXNSR0IArs
 
 2. 搜索flag，过滤出TCP流，追踪一下发现flag
 
-![image.png](https://img.88800001.xyz/file/1786255473664_image.png)
+![image.png](/images/blog/1786255473664_image.webp)
 
 3. flag{da73d88936010da1eeeb36e945ec4b97}
 
@@ -186,7 +186,7 @@ data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAYAAAB12js8AAAAAXNSR0IArs
 
 2. 用RouterPassView打开，搜索Username，得到053700357621
 
-![image.png](https://img.88800001.xyz/file/1786256146616_image.png)
+![image.png](/images/blog/1786256146616_image.webp)
 
 3. flag{053700357621}
 
@@ -212,7 +212,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 3. 搜索flag，得到flag
 
-![image.png](https://img.88800001.xyz/file/1786256413467_image.png)
+![image.png](/images/blog/1786256413467_image.webp)
 
 4. flag{stego_is_s0_bor1ing}
 
@@ -222,11 +222,11 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 2. 题目提示是zip伪加密，用010打开zip，将“50 4B 03 04 14 00 09 00”改为“50 4B 03 04 14 00 00 00”另存并打开得到flag
 
-![image.png](https://img.88800001.xyz/file/1786256544391_image.png)
+![image.png](/images/blog/1786256544391_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786256590017_image.png)
+![image.png](/images/blog/1786256590017_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786256674072_image.png)
+![image.png](/images/blog/1786256674072_image.webp)
 
 3. flag{Adm1N-B2G-kU-SZIP}
 
@@ -236,7 +236,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 2. 题目提示黑客通过wireshark抓到管理员登陆网站的一段流量包（管理员的密码即是答案) ,我们直接搜索password，得到flag
 
-![image.png](https://img.88800001.xyz/file/1786257044785_image.png)
+![image.png](/images/blog/1786257044785_image.webp)
 
 3. flag{ffb7567a1d4f4abdffdb54e022f8facd}
 
@@ -246,9 +246,9 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 2. 追踪TCP流，发现到tcp.stream eq 7时有异常，导出分组字节流，然后base64转图片
 
-![image.png](https://img.88800001.xyz/file/1786258755111_image.png)
+![image.png](/images/blog/1786258755111_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786258786297_image.png)
+![image.png](/images/blog/1786258786297_image.webp)
 
 3. flag{209acebf6324a09671abc31c869de72c}
 
@@ -258,7 +258,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 2. 放到010，找到一串二进制
 
-![image.png](https://img.88800001.xyz/file/1786259596437_image.png)
+![image.png](/images/blog/1786259596437_image.webp)
 
 二进制转ASCII码得到
 
@@ -286,15 +286,15 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 2. 题目提示LSB，把图片用StegSolve打开
 
-![image.png](https://img.88800001.xyz/file/1786260131005_image.png)
+![image.png](/images/blog/1786260131005_image.webp)
 
 savebin，后缀改为png，
 
-![flag.png](https://img.88800001.xyz/file/1786260299583_flag.png)
+![flag.png](/images/blog/1786260299583_flag.webp)
 
 得到一张二维码扫码得到
 
-![image.png](https://img.88800001.xyz/file/1786260273876_image.png)
+![image.png](/images/blog/1786260273876_image.webp)
 
 3. flag{1sb_i4_s0_Ea4y}}
 
@@ -304,11 +304,11 @@ savebin，后缀改为png，
 
 2. 
 
-![image.png](https://img.88800001.xyz/file/1786262620542_image.png)
+![image.png](/images/blog/1786262620542_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786262699339_image.png)
+![image.png](/images/blog/1786262699339_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786262752529_image.png)
+![image.png](/images/blog/1786262752529_image.webp)
 
 3. 听出flag{9001IVR}
 
@@ -322,9 +322,9 @@ VoIP(Voice over  Internet Protocol)，ip语音协议。音频与视频聊天通�
 
 2. 观看git,发现flag在帧数里，用脚本分离帧数得到
 
-![image.png](https://img.88800001.xyz/file/1786269773261_image.png)
+![image.png](/images/blog/1786269773261_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786269850820_image.png)
+![image.png](/images/blog/1786269850820_image.webp)
 
 3. flag{he11ohongke}
 
@@ -354,13 +354,13 @@ print(f"全部帧已输出到 {out_folder}/")
 
 1. 下载附件，得到一个不完整的图片(修改宽高)
 
-![image.png](https://img.88800001.xyz/file/1786265915376_image.png)
+![image.png](/images/blog/1786265915376_image.webp)
 
 2. 用010打开，第二行前4位是宽，4-8位是高，改高点
 
-![image.png](https://img.88800001.xyz/file/1786265857657_image.png)
+![image.png](/images/blog/1786265857657_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786265943144_image.png)
+![image.png](/images/blog/1786265943144_image.webp)
 
 3. flag{He1l0_d4_ba1}
 
@@ -368,11 +368,11 @@ print(f"全部帧已输出到 {out_folder}/")
 
 1. 下载附件，得到一个压缩包
 
-2. 题目提示4位数字爆破，爆破得![image.png](https://img.88800001.xyz/file/1786270299223_image.png)
+2. 题目提示4位数字爆破，爆破得![image.png](/images/blog/1786270299223_image.webp)
 
 3. 得到一串base64，解密得到flag
 
-![image.png](https://img.88800001.xyz/file/1786270364601_image.png)
+![image.png](/images/blog/1786270364601_image.webp)
 
 4. flag{70354300a5100ba78068805661b93a5c}
 
@@ -382,11 +382,11 @@ print(f"全部帧已输出到 {out_folder}/")
 
 2. 尝试分离
 
-![image.png](https://img.88800001.xyz/file/1786270797633_image.png)
+![image.png](/images/blog/1786270797633_image.webp)
 
 3. 得到一个压缩包，题目提示4位数字爆破得
 
-![image.png](https://img.88800001.xyz/file/1786270859010_image.png)
+![image.png](/images/blog/1786270859010_image.webp)
 
 4. flag{b025fc9ca797a67d2103bfbc407a6d5f}
 
@@ -396,7 +396,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 2. 尝试分离没有附加文件，用010打开，搜索flag
 
-![image.png](https://img.88800001.xyz/file/1786271176573_image.png)
+![image.png](/images/blog/1786271176573_image.webp)
 
 3. flag{97314e7864a8f62627b26f3f998c37f1}
 
@@ -406,7 +406,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 2. 同19
 
-![image.png](https://img.88800001.xyz/file/1786272009735_image.png)
+![image.png](/images/blog/1786272009735_image.webp)
 
 3. flag{377cbadda1eca2f2f73d36277781f00a}
 
@@ -416,11 +416,11 @@ print(f"全部帧已输出到 {out_folder}/")
 
 2. 用010打开，发现末尾有一串hex
 
-![image.png](https://img.88800001.xyz/file/1786870033004_image.png)
+![image.png](/images/blog/1786870033004_image.webp)
 
 3. 将这串hex转成坐标
 
-![image.png](https://img.88800001.xyz/file/1786870126998_image.png)
+![image.png](/images/blog/1786870126998_image.webp)
 
 4. 用脚本将坐标绘制成图
 
@@ -452,7 +452,7 @@ plt.close()
 print("已生成 qrcode.png")
 ```
 
-![qrcode.png](https://img.88800001.xyz/file/1786871224003_qrcode.png)
+![qrcode.png](/images/blog/1786871224003_qrcode.webp)
 
 5. 扫码得到flag{40fc0a979f759c8892f4dc045e28b820}
 
@@ -466,11 +466,11 @@ print("已生成 qrcode.png")
 
 4. 打开key_part_one->NUL，发现“+++++ +++++ [->++ +++++ +++<] >++.+ +++++ .<+++ [->-- -<]>- -.+++ +++.< ++++[ ->+++ +<]>+ +++.< +++++ +[->- ----- <]>-- ----- --.<+ +++[- >---- <]>-- ----- .<+++ [->++ +<]>+ +++++ .<+++ +[->- ---<] >-.<+ +++++ [->++ ++++< ]>+++ +++.< +++++ [->-- ---<] >---- -.+++ .<+++ [->-- -<]>- ----- .<”
 
-![image.png](https://img.88800001.xyz/file/1786873394718_image.png)
+![image.png](/images/blog/1786873394718_image.webp)
 
 5. 打开key_part_two->where_is_flag_part_two.txt
 
-![image.png](https://img.88800001.xyz/file/1786873497020_image.png)
+![image.png](/images/blog/1786873497020_image.webp)
 
 Oops提示Ook，Ook 编码藏在 NTFS备用数据流，用记事本直接打开看不到
 
@@ -478,9 +478,9 @@ Oops提示Ook，Ook 编码藏在 NTFS备用数据流，用记事本直接打开�
 more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 ```
 
-![image.png](https://img.88800001.xyz/file/1786874088855_image.png)
+![image.png](/images/blog/1786874088855_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786875061901_image.png)
+![image.png](/images/blog/1786875061901_image.webp)
 
 6. 拼接flag{N7F5_AD5_i5_funny!}
 
@@ -490,11 +490,11 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 2. 有篮球.gif和篮球副本.gif，篮球副本.gif打不开，与篮球.gif对照，发现少了头文件“47 49 46 38”，用010修复
 
-![image.png](https://img.88800001.xyz/file/1786878482215_image.png)
+![image.png](/images/blog/1786878482215_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786878569267_image.png)
+![image.png](/images/blog/1786878569267_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1786878396075_image.png)
+![image.png](/images/blog/1786878396075_image.webp)
 
 3. flag{zhi_yin_you_are_beautiful}
 
@@ -504,11 +504,11 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 2. 打不开，用010打开，发现缺少头文件“47 49 46 38”
 
-![image.png](https://img.88800001.xyz/file/1786887998239_image.png)
+![image.png](/images/blog/1786887998239_image.webp)
 
 3. 观看git,发现flag在帧数里，用脚本分离帧数得到
 
-![image.png](https://img.88800001.xyz/file/1786887782333_image.png)![image.png](https://img.88800001.xyz/file/1786887865358_image.png)
+![image.png](/images/blog/1786887782333_image.webp)![image.png](/images/blog/1786887865358_image.webp)
 
 4. CTF{wang_bao_qiang_is_sad}
 
@@ -518,9 +518,9 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 2. 用脚本爆破宽高
 
-![image.png](https://img.88800001.xyz/file/1786890242910_image.png)
+![image.png](/images/blog/1786890242910_image.webp)
 
-![fixed.png](https://img.88800001.xyz/file/1786890351573_fixed.png)
+![fixed.png](/images/blog/1786890351573_fixed.webp)
 
 3. flag{66666}
 
@@ -575,7 +575,7 @@ print("输出 fixed.png")
 
 2. 摩斯密码“.- .-.. .--. .... .- .-.. .- -...”
 
-![image.png](https://img.88800001.xyz/file/1786891924560_image.png)
+![image.png](/images/blog/1786891924560_image.webp)
 
 3. flag{alphalab}
 
@@ -589,7 +589,7 @@ print("输出 fixed.png")
 
 3. 找呀找呀，查看属性
 
-![image.png](https://img.88800001.xyz/file/1786892417827_image.png)
+![image.png](/images/blog/1786892417827_image.webp)
 
 4. flag{870c5a72806115cb5439345d8b014396}
 
@@ -601,9 +601,9 @@ print("输出 fixed.png")
 
 1. "0086 1562 2535 5174"
 
-![image.png](https://img.88800001.xyz/file/1786893116608_image.png)
+![image.png](/images/blog/1786893116608_image.webp)
 
-2. "bnhn s wwy vffg vffg rrhy fhnv"五笔->“也 要 从 娃 娃 抓 起”。合起来是"人工智能也要从娃娃抓起"MD5得到“3b4b5dccd2c008fe7e2664bd1bc19292”![image.png](https://img.88800001.xyz/file/1786894095336_image.png)
+2. "bnhn s wwy vffg vffg rrhy fhnv"五笔->“也 要 从 娃 娃 抓 起”。合起来是"人工智能也要从娃娃抓起"MD5得到“3b4b5dccd2c008fe7e2664bd1bc19292”![image.png](/images/blog/1786894095336_image.webp)
 
 3. flag{3b4b5dccd2c008fe7e2664bd1bc19292}
 
@@ -613,15 +613,15 @@ print("输出 fixed.png")
 
 2. 发现一个flag.txt
 
-![image.png](https://img.88800001.xyz/file/1786895101599_image.png)
+![image.png](/images/blog/1786895101599_image.webp)
 
 提示在exe里面，发现
 
-![image.png](https://img.88800001.xyz/file/1786895158478_image.png)
+![image.png](/images/blog/1786895158478_image.webp)
 
 用ida打开发现flag
 
-![image.png](https://img.88800001.xyz/file/1786895009339_image.png)
+![image.png](/images/blog/1786895009339_image.webp)
 
 3. flag{29a0vkrlek3eu10ue89yug9y4r0wdu10}
 
@@ -631,11 +631,11 @@ print("输出 fixed.png")
 
 2. 用audacity打开
 
-![image.png](https://img.88800001.xyz/file/1786895572099_image.png)
+![image.png](/images/blog/1786895572099_image.webp)
 
 摩斯密码“..... -... -.-. ----. ..--- ..... -.... ....- ----. -.-. -... ----- .---- ---.. ---.. ..-. ..... ..--- . -.... .---- --... -.. --... ----- ----. ..--- ----. .---- ----. .---- -.-.”
 
-![image.png](https://img.88800001.xyz/file/1786895562202_image.png)
+![image.png](/images/blog/1786895562202_image.webp)
 
 3. flag{5BC925649CB0188F52E617D70929191C}
 
@@ -653,17 +653,17 @@ print("输出 fixed.png")
 
 - RAR5：`52 61 72 21 1A 07 01 00`
 
-![image.png](https://img.88800001.xyz/file/1787497712694_image.png)
+![image.png](/images/blog/1787497712694_image.webp)
 
 3. 利用脚本将16进制数据转成二进制压缩包，爆破得到压缩包密码“3690”
 
-![image.png](https://img.88800001.xyz/file/1787470037553_image.png)
+![image.png](/images/blog/1787470037553_image.webp)
 
 4. 打开图片发现提示文件格式错误，用010打开，发现文件末尾为“FF D9”，文件开头应为“FF D8”，修改文件头，发现flag
 
-![image.png](https://img.88800001.xyz/file/1787470518610_image.png)
+![image.png](/images/blog/1787470518610_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1787470660515_image.png)
+![image.png](/images/blog/1787470660515_image.webp)
 
 - JPEG 文件头：`FF D8 FF`（文件起始）
 
@@ -688,15 +688,15 @@ out.close()
 
 2. 压缩包异常，用010打开，发现头文件错了，应该是“52 61”
 
-![image.png](https://img.88800001.xyz/file/1787470998506_image.png)
+![image.png](/images/blog/1787470998506_image.webp)
 
 3. 打开发现，什么都没有，用010打开，发现“50 4B 03 04”是zip，更改后缀
 
-![image.png](https://img.88800001.xyz/file/1787471195881_image.png)
+![image.png](/images/blog/1787471195881_image.webp)
 
 4. 然后找，最后在word文件夹中document.xml发现音乐符号文本加密：“♭♯♪‖¶♬♭♭♪♭‖‖♭♭♬‖♫♪‖♩♬‖♬♬♭♭♫‖♩♫‖♬♪♭♭♭‖¶∮‖‖‖‖♩♬‖♬♪‖♩♫♭♭♭♭♭§‖♩♩♭♭♫♭♭♭‖♬♭‖¶§♭♭♯‖♫∮‖♬¶‖¶∮‖♬♫‖♫♬‖♫♫§=”
 
-![image.png](https://img.88800001.xyz/file/1787472069212_image.png)
+![image.png](/images/blog/1787472069212_image.webp)
 
 5. flag{thEse_n0tes_ArE_am@zing~}
 
@@ -704,11 +704,11 @@ out.close()
 
 1. 下载附件，得到一个文本
 
-![image.png](https://img.88800001.xyz/file/1787472300703_image.png)
+![image.png](/images/blog/1787472300703_image.webp)
 
 2. 凯撒解密得到flag
 
-![image.png](https://img.88800001.xyz/file/1787472451084_image.png)
+![image.png](/images/blog/1787472451084_image.webp)
 
 ### 凯撒密码
 
@@ -720,11 +720,11 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 1. 下载附件，得到一个文本
 
-![image.png](https://img.88800001.xyz/file/1787472878307_image.png)
+![image.png](/images/blog/1787472878307_image.webp)
 
 2. 低头看键盘
 
-![image.png](https://img.88800001.xyz/file/1787473230497_image.png)
+![image.png](/images/blog/1787473230497_image.webp)
 
 3. flag{CTF}
 
@@ -736,13 +736,13 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 3. 查找“PK”，发现zip伪加密
 
-![image.png](https://img.88800001.xyz/file/1787479211564_image.png)
+![image.png](/images/blog/1787479211564_image.webp)
 
 4. 打开fo.txt，得到“佛曰：遮等諳勝能礙皤藐哆娑梵迦侄羅哆迦梵者梵楞蘇涅侄室實真缽朋能。奢怛俱道怯都諳怖梵尼怯一罰心缽謹缽薩苦奢夢怯帝梵遠朋陀諳陀穆諳所呐知涅侄以薩怯想夷奢醯數羅怯諸”，解密后得到flag
 
-![image.png](https://img.88800001.xyz/file/1787479591189_image.png)
+![image.png](/images/blog/1787479591189_image.webp)
 
-![image.png](https://img.88800001.xyz/file/1787479749942_image.png)
+![image.png](/images/blog/1787479749942_image.webp)
 
 5. flag{w0_fo_ci_Be1}
 
@@ -752,13 +752,13 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 2. 压缩包名字提示4位数爆破
 
-![image.png](https://img.88800001.xyz/file/1787480960678_image.png)
+![image.png](/images/blog/1787480960678_image.webp)
 
 3. 得到一张图片，查看属性，得到flag
 
-![flag.jpg](https://img.88800001.xyz/file/1787481065171_flag.jpg)
+![flag.jpg](/images/blog/1787481065171_flag.webp)
 
-![image.png](https://img.88800001.xyz/file/1787481145654_image.png)
+![image.png](/images/blog/1787481145654_image.webp)
 
 4. flag{Wadf_123}
 
@@ -768,11 +768,11 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 2. 用stegsolve打开，注意到zip头文件，save bin保存成zip文件
 
-![image.png](https://img.88800001.xyz/file/1787492386941_image.png)
+![image.png](/images/blog/1787492386941_image.webp)
 
 3. 运行程序，得到flag
 
-![image.png](https://img.88800001.xyz/file/1787492780067_image.png)
+![image.png](/images/blog/1787492780067_image.webp)
 
 4. flag{dd0gf4c3tok3yb0ard4g41n~~~}
 
@@ -780,19 +780,19 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 1. 下载附件，得到一张图片
 
-![image.png](https://img.88800001.xyz/file/1787493183649_image.png)
+![image.png](/images/blog/1787493183649_image.webp)
 
 2. 解密盲文，得到“kmdonowg”密钥打开压缩包
 
-![image.png](https://img.88800001.xyz/file/1787493321665_image.png)
+![image.png](/images/blog/1787493321665_image.webp)
 
 3. 得到音频，用Audacity打开得到“-.-. - ..-. .-- .--. . .. ----- ---.. --... ...-- ..--- ..--.. ..--- ...-- -.. --..”
 
-![image.png](https://img.88800001.xyz/file/1787493453970_image.png)
+![image.png](/images/blog/1787493453970_image.webp)
 
 4. 摩斯密码解密得到flag
 
-![image.png](https://img.88800001.xyz/file/1787494419415_image.png)
+![image.png](/images/blog/1787494419415_image.webp)
 
 5. flag{wpei08732?23dz}
 
@@ -802,11 +802,11 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 2. 题目提示4位数字爆破
 
-![image.png](https://img.88800001.xyz/file/1787494735863_image.png)
+![image.png](/images/blog/1787494735863_image.webp)
 
 3. 解密得到flag{e4bbef8bdf9743f8bf5b727a9f6332a8}
 
-![image.png](https://img.88800001.xyz/file/1787494905645_image.png)
+![image.png](/images/blog/1787494905645_image.webp)
 
 ## 40.[UTCTF2020]zero
 
@@ -814,6 +814,6 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 2. 题目提示零宽字符隐写，解密得到flag
 
-![image.png](https://img.88800001.xyz/file/1787497373624_image.png)
+![image.png](/images/blog/1787497373624_image.webp)
 
 3. flag{whyNOT@sc11_4927aajbqk14}

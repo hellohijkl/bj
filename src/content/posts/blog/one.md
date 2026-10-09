@@ -65,7 +65,7 @@ flag存放在zip rar tar.gz 7z里
 
 https://blog.csdn.net/jiayoudangdang/article/details/79828853
 
-![ASCLL.png](https://img.88800001.xyz/file/1786212210634_ASCLL.png)
+![ASCLL.png](/images/blog/1786212210634_ASCLL.webp)
 
 不可打印字符.的ASCII码是退格
 

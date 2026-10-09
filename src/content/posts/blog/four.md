@@ -16,7 +16,7 @@ draft: false
 
 1. 题目描述
 
-![image.png](https://img.88800001.xyz/file/1789563292477_image.png)
+![image.png](/images/blog/1789563292477_image.webp)
 
 2. 附件main.go
 
@@ -97,7 +97,7 @@ func main() {
 
 4. 得到flag
 
-![image.png](https://img.88800001.xyz/file/1789563915540_image.png)
+![image.png](/images/blog/1789563915540_image.webp)
 
 #### Base套娃
 
@@ -105,15 +105,15 @@ func main() {
 
 2. base64解码
 
-![image.png](https://img.88800001.xyz/file/1789565674845_image.png)
+![image.png](/images/blog/1789565674845_image.webp)
 
 3. base58解码
 
-![image.png](https://img.88800001.xyz/file/1789565687237_image.png)
+![image.png](/images/blog/1789565687237_image.webp)
 
 4. base32解码
 
-![image.png](https://img.88800001.xyz/file/1789565711406_image.png)
+![image.png](/images/blog/1789565711406_image.webp)
 
 5. flag{af7bfd4a-7399-48ff-808d-0aa888ac708f}
 
@@ -121,17 +121,17 @@ func main() {
 
 1. 题目描述
 
-![image.png](https://img.88800001.xyz/file/1789571494904_image.png)
+![image.png](/images/blog/1789571494904_image.webp)
 
 2. 通过不断的抽，base4解码得到flag{2140dd0e-5f40-4f47-ab99-4c20b988b980}
 
-![image.png](https://img.88800001.xyz/file/1789571545194_image.png)
+![image.png](/images/blog/1789571545194_image.webp)
 
 #### 抽奖盒Plus
 
 1. 题目描述
 
-![image.png](https://img.88800001.xyz/file/1789572577823_image.png)
+![image.png](/images/blog/1789572577823_image.webp)
 
 2. 根据题目写脚本
 
@@ -159,6 +159,6 @@ for _ in range(1000):
 
 ```
 
-![image.png](https://img.88800001.xyz/file/1789573309258_image.png)
+![image.png](/images/blog/1789573309258_image.webp)
 
 3. flag{1c66cb80-3f5e-40a1-92d3-7448be81539e}
