@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { siteConfig } from "@/config";
 import {
 	dynamicSearchText,
 	dynamicSlug,
@@ -9,6 +10,14 @@ import {
 const markdownImagePattern = /!\[([^\]]*)\]\((\S+?)(?:\s+["']([^"']*)["'])?\)/g;
 
 export async function GET() {
+	if (!siteConfig.pages.dynamic) {
+		return new Response(JSON.stringify({ error: "Not Found" }), {
+			status: 404,
+			headers: {
+				"Content-Type": "application/json; charset=utf-8",
+			},
+		});
+	}
 	const processor = await createMarkdownProcessor();
 	const dynamics = sortDynamics(await getCollection("dynamic"));
 	const data = await Promise.all(

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>写作终端 · dev only</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #0b0f14; color: #c9d1d9;
+    font-family: "Cascadia Code", Consolas, "JetBrains Mono", "Noto Sans Mono CJK SC", monospace;
+    font-size: 14px; line-height: 1.55; overflow: hidden;
+  }
+  #app { display: flex; flex-direction: column; height: 100vh; }
+
+  /* ===== 终端模式 ===== */
+  #titlebar {
+    padding: 6px 14px; background: #11161d; color: #8b949e;
+    font-size: 12px; border-bottom: 1px solid #1f2730;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  #titlebar .dot { color: #f85149; }
+  #term { flex: 1; overflow-y: auto; padding: 14px 18px; cursor: text; }
+  #term::-webkit-scrollbar { width: 8px; }
+  #term::-webkit-scrollbar-thumb { background: #2d333b; border-radius: 4px; }
+  .line { white-space: pre-wrap; word-break: break-all; }
+  .line.sys { color: #7ee787; }
+  .line.err { color: #ff7b72; }
+  .line.warn { color: #e3b341; }
+  .line.dim { color: #8b949e; }
+  .line a { color: #58a6ff; text-decoration: none; }
+  .line a:hover { text-decoration: underline; }
+  .prompt { color: #7ee787; }
+  .prompt .path { color: #79c0ff; }
+  #inputline { display: flex; }
+  #inputline input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: #e6edf3; font: inherit; caret-color: #7ee787;
+  }
+  table.ls { border-collapse: collapse; margin: 2px 0; }
+  table.ls td { padding: 0 14px 0 0; white-space: nowrap; }
+  table.ls td.t { white-space: normal; color: #e6edf3; }
+  .tag { border-radius: 4px; padding: 0 6px; font-size: 12px; }
+  .tag.enc { color: #e3b341; }
+  .tag.draft { color: #d2a8ff; }
+
+  /* ===== 编辑模式 ===== */
+  #editor { display: none; flex: 1; flex-direction: column; min-height: 0; }
+  #editbar {
+    display: flex; gap: 10px; align-items: center;
+    padding: 8px 14px; background: #11161d; border-bottom: 1px solid #1f2730;
+  }
+  #editbar .slug { color: #79c0ff; }
+  #editbar .status { margin-left: auto; color: #8b949e; }
+  #editbar button, #confirmbox button {
+    background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
+    border-radius: 6px; padding: 4px 12px; font: inherit; cursor: pointer;
+  }
+  #editbar button:hover { background: #30363d; }
+  #editbar button.primary { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+  #editbody { flex: 1; display: flex; min-height: 0; }
+  #md {
+    flex: 1; background: #0b0f14; color: #e6edf3; border: none; outline: none;
+    resize: none; padding: 14px 18px; font: inherit; tab-size: 2;
+  }
+  #previewwrap { flex: 1; border-left: 1px solid #1f2730; display: flex; flex-direction: column; min-width: 0; }
+  #previewwrap .pvhead {
+    padding: 4px 12px; font-size: 12px; color: #8b949e;
+    background: #11161d; border-bottom: 1px solid #1f2730;
+  }
+  #preview { flex: 1; border: none; background: #fff; }
+  #confirmbox {
+    display: none; padding: 8px 14px; background: #1c1218;
+    border-top: 1px solid #f8514940; color: #ff7b72; gap: 10px; align-items: center;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="titlebar">
+    <span><span class="dot">●</span> 写作终端 — 仅本机 dev 环境有效，不会部署到线上</span>
+    <span>helloblog.88800001.xyz</span>
+  </div>
+
+  <div id="term"></div>
+
+  <div id="confirmbox"><span id="confirm-text"></span><button id="confirm-yes">删除</button><button id="confirm-no">取消</button></div>
+
+  <div id="editor">
+    <div id="editbar">
+      <span>✎</span><span class="slug" id="edit-slug"></span>
+      <button class="primary" id="btn-save">💾 保存（Ctrl+S）</button>
+      <button id="btn-reload">🔄 刷新预览</button>
+      <button id="btn-reread">📂 重读文件</button>
+      <button id="btn-close">✖ 关闭编辑器</button>
+      <span class="status" id="edit-status"></span>
+    </div>
+    <div id="editbody">
+      <textarea id="md" spellcheck="false"></textarea>
+      <div id="previewwrap">
+        <div class="pvhead">预览（真实样式，显示的是已保存版本）<span id="pv-note"></span></div>
+        <iframe id="preview"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var term = document.getElementById("term");
+  var editor = document.getElementById("editor");
+  var input = document.createElement("input");
+  var promptEl = document.createElement("span");
+  var md = document.getElementById("md");
+  var preview = document.getElementById("preview");
+  var editStatus = document.getElementById("edit-status");
+
+  var history = [];
+  var histIdx = 0;
+  var busy = false;
+  var slugsCache = null;
+  var currentSlug = null;
+  var savedContent = "";
+  var pendingDelete = null;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function println(text, cls) {
+    var div = document.createElement("div");
+    div.className = "line" + (cls ? " " + cls : "");
+    div.innerHTML = text;
+    term.insertBefore(div, document.getElementById("inputline"));
+    term.scrollTop = term.scrollHeight;
+  }
+
+  function printHTML(html) {
+    var div = document.createElement("div");
+    div.className = "line";
+    div.innerHTML = html;
+    term.insertBefore(div, document.getElementById("inputline"));
+    term.scrollTop = term.scrollHeight;
+  }
+
+  function promptHTML() {
+    return '<span class="prompt">writer@helloblog:<span class="path">~/blog</span>$ </span>';
+  }
+
+  function makeInputLine() {
+    var line = document.createElement("div");
+    line.id = "inputline";
+    line.className = "line";
+    promptEl.innerHTML = promptHTML().replace(/<\/?span[^>]*>/g, function (m) { return m; });
+    line.appendChild(promptEl);
+    line.appendChild(input);
+    term.appendChild(line);
+    input.focus();
+  }
+
+  function focusInput() {
+    if (editor.style.display === "flex") return;
+    if (window.getSelection().toString()) return;
+    input.focus();
+  }
+  term.addEventListener("mouseup", focusInput);
+
+  /* ---------- API ---------- */
+  function api(path, opts) {
+    return fetch(path, opts).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (!res.ok) throw new Error(data.error || ("HTTP " + res.status));
+        return data;
+      });
+    });
+  }
+
+  function loadSlugs(force) {
+    if (slugsCache && !force) return Promise.resolve(slugsCache);
+    return api("/admin/api/posts/").then(function (d) {
+      slugsCache = d.posts;
+      return slugsCache;
+    });
+  }
+
+  /* ---------- 命令 ---------- */
+  var commands = {
+    help: function () {
+      printHTML(
+        "可用命令：\n" +
+        "  <span class='sys'>ls</span>                    列出全部文章（🔒=已加密 📝=草稿）\n" +
+        "  <span class='sys'>new</span> &lt;slug&gt; [标题]      新建文章并进入编辑（slug 不带路径时默认存到 blog/）\n" +
+        "  <span class='sys'>edit</span> &lt;slug&gt;            编辑文章（左侧源码，右侧博客真实样式预览，Ctrl+S 保存）\n" +
+        "  <span class='sys'>rm</span> &lt;slug&gt;               删除文章（需确认，可从 git 恢复）\n" +
+        "  <span class='sys'>pass</span> &lt;slug&gt; &lt;密码&gt; [提示]  给文章加密；<span class='sys'>pass &lt;slug&gt; clear</span> 解除加密\n" +
+        "  <span class='sys'>pub</span> / <span class='sys'>unpub</span> &lt;slug&gt;      发布 / 转回草稿\n" +
+        "  <span class='sys'>open</span> &lt;slug&gt;            在浏览器打开文章页\n" +
+        "  <span class='sys'>code</span> [slug]            用 VS Code 打开文章（不带参数打开整个博客项目）\n" +
+        "  <span class='sys'>log</span>                   查看最近的后台操作记录\n" +
+        "  <span class='sys'>build</span>                 构建博客（约 1-2 分钟）\n" +
+        "  <span class='sys'>deploy</span>                构建 + 部署到线上（wrangler）\n" +
+        "  <span class='sys'>clear</span>                 清屏\n" +
+        "  Tab 补全命令名和文章路径，↑↓ 翻历史，Ctrl+C 取消当前输入"
+      );
+    },
+
+    ls: function () {
+      return loadSlugs(true).then(function (posts) {
+        if (!posts.length) { println("（没有文章）", "dim"); return; }
+        var html = "<table class='ls'>";
+        posts.forEach(function (p) {
+          var flags = (p.encrypted ? "<span class='tag enc'>🔒</span>" : "") +
+                      (p.draft ? "<span class='tag draft'>📝草稿</span>" : "");
+          html += "<tr><td>" + flags + "</td><td class='dim'>" + esc(p.published) + "</td><td class='dim'>" +
+                  p.words + "字</td><td class='sys'>" + esc(p.slug) + "</td><td class='t'>" + esc(p.title) + "</td></tr>";
+        });
+        html += "</table>";
+        printHTML(html);
+        println("共 " + posts.length + " 篇", "dim");
+      });
+    },
+
+    new: function (args) {
+      if (!args[0]) { println("用法：new &lt;slug&gt; [标题]", "err"); return; }
+      var title = args.slice(1).join(" ");
+      return api("/admin/api/new/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ slug: args[0], title: title }),
+      }).then(function (d) {
+        slugsCache = null;
+        println("已创建 " + d.slug + "，进入编辑器…", "sys");
+        return openEditor(d.slug);
+      });
+    },
+
+    edit: function (args) {
+      if (!args[0]) { println("用法：edit &lt;slug&gt;（用 ls 查看路径）", "err"); return; }
+      return openEditor(args[0]);
+    },
+
+    rm: function (args) {
+      if (!args[0]) { println("用法：rm &lt;slug&gt;", "err"); return; }
+      pendingDelete = args[0];
+      document.getElementById("confirm-text").textContent =
+        "确认删除「" + args[0] + "」？此操作删除文件（git 历史里仍可恢复）。";
+      document.getElementById("confirmbox").style.display = "flex";
+      return Promise.resolve();
+    },
+
+    pass: function (args) {
+      if (args.length < 2) { println("用法：pass &lt;slug&gt; &lt;密码&gt; [提示]  或  pass &lt;slug&gt; clear", "err"); return; }
+      var slug = args[0];
+      if (args[1] === "clear") {
+        return api("/admin/api/frontmatter/", {
+          method: "POST", headers: { "content-type": "application/json" },
+          body: JSON.stringify({ slug: slug, key: "password", clear: true }),
+        }).then(function () {
+          return api("/admin/api/frontmatter/", {
+            method: "POST", headers: { "content-type": "application/json" },
+            body: JSON.stringify({ slug: slug, key: "passwordHint", clear: true }),
+          });
+        }).then(function () {
+          slugsCache = null;
+          println("已解除 " + slug + " 的加密", "sys");
+        });
+      }
+      var hint = args.slice(2).join(" ");
+      return api("/admin/api/frontmatter/", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ slug: slug, key: "password", value: args[1] }),
+      }).then(function () {
+        var p = hint
+          ? api("/admin/api/frontmatter/", {
+              method: "POST", headers: { "content-type": "application/json" },
+              body: JSON.stringify({ slug: slug, key: "passwordHint", value: hint }),
+            })
+          : Promise.resolve();
+        return p;
+      }).then(function () {
+        slugsCache = null;
+        println("🔒 " + slug + " 已加密，密码只保存在文章 frontmatter，构建时全文 AES-256-GCM 加密", "sys");
+        println("在文章页输入密码即可解锁，密码缓存在访客的 sessionStorage 里", "dim");
+      });
+    },
+
+    pub: function (args) { return setDraft(args[0], false); },
+    unpub: function (args) { return setDraft(args[0], true); },
+
+    open: function (args) {
+      if (!args[0]) { println("用法：open &lt;slug&gt;", "err"); return; }
+      window.open("/posts/" + args[0] + "/", "_blank");
+      println("已在浏览器打开", "dim");
+      return Promise.resolve();
+    },
+
+    code: function (args) {
+      return api("/admin/api/vscode/", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ slug: args[0] || "" }),
+      }).then(function (r) {
+        if (r.ok) println("✅ 已在 VS Code 打开" + (args[0] ? " " + esc(args[0]) : " 整个博客项目"), "sys");
+        else println("❌ 打开失败：" + esc(r.error || "") + "（可能未安装 VS Code 或 code 命令不在 PATH）", "err");
+      });
+    },
+
+    log: function () {
+      return api("/admin/api/log/").then(function (d) {
+        if (!d.lines.length) { println("（还没有操作记录）", "dim"); return; }
+        println("最近 " + d.lines.length + " 条操作记录：", "dim");
+        d.lines.forEach(function (l) {
+          try {
+            var e = JSON.parse(l);
+            println(esc(e.t.replace("T", " ") + "  " + e.op + "  " + e.path + (e.detail ? "  " + e.detail : "")));
+          } catch (x) { println(esc(l), "dim"); }
+        });
+      });
+    },
+
+    build: function () { return runLong("build", "构建"); },
+    deploy: function () { return runLong("deploy", "构建 + 部署"); },
+
+    clear: function () {
+      Array.prototype.slice.call(term.querySelectorAll(".line")).forEach(function (el) {
+        if (el.id !== "inputline") el.remove();
+      });
+      return Promise.resolve();
+    },
+  };
+
+  function setDraft(slug, draft) {
+    if (!slug) { println("用法：" + (draft ? "unpub" : "pub") + " &lt;slug&gt;", "err"); return; }
+    return api("/admin/api/frontmatter/", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slug: slug, key: "draft", value: draft }),
+    }).then(function () {
+      slugsCache = null;
+      println(draft ? "📝 " + slug + " 已转回草稿" : "✅ " + slug + " 已发布", "sys");
+    });
+  }
+
+  function runLong(cmd, label) {
+    println(label + "中，请稍候（构建约 1-2 分钟，部署再 +30 秒）…", "warn");
+    var t0 = Date.now();
+    return api("/admin/api/run/", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ cmd: cmd }),
+    }).then(function (r) {
+      var secs = Math.round((Date.now() - t0) / 1000);
+      var log = r.log || "";
+      var lines = log.split(/\r?\n/);
+      if (lines.length > 40) {
+        println("…（前面 " + (lines.length - 40) + " 行略）…", "dim");
+        lines = lines.slice(-40);
+      }
+      println(esc(lines.join("\n")) || "（无输出）", "dim");
+      if (r.code === 0) println("✅ " + label + "完成，用时 " + secs + " 秒", "sys");
+      else println("❌ " + label + "失败（退出码 " + r.code + "），日志见上", "err");
+    });
+  }
+
+  /* ---------- 解析与调度 ---------- */
+  function tokenize(s) {
+    var out = [], cur = "", q = null;
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (q) { if (c === q) q = null; else cur += c; }
+      else if (c === '"' || c === "'") q = c;
+      else if (/\s/.test(c)) { if (cur) { out.push(cur); cur = ""; } }
+      else cur += c;
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+
+  function runCommand(raw) {
+    var parts = tokenize(raw.trim());
+    if (!parts.length) return Promise.resolve();
+    var name = parts[0], args = parts.slice(1);
+    var fn = commands[name];
+    if (!fn) {
+      println("未知命令：" + esc(name) + "，输入 help 查看命令", "err");
+      return Promise.resolve();
+    }
+    return Promise.resolve(fn(args)).catch(function (e) {
+      println(esc(e.message || String(e)), "err");
+    });
+  }
+
+  input.addEventListener("keydown", function (e) {
+    if (busy) { e.preventDefault(); return; }
+    if (e.key === "Enter") {
+      var raw = input.value;
+      println(promptHTML() + esc(raw));
+      input.value = "";
+      if (raw.trim()) { history.push(raw); }
+      histIdx = history.length;
+      busy = true;
+      runCommand(raw).then(function () { busy = false; term.scrollTop = term.scrollHeight; });
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (histIdx > 0) { histIdx--; input.value = history[histIdx] || ""; }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (histIdx < history.length) { histIdx++; input.value = history[histIdx] || ""; }
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      tabComplete();
+    } else if (e.ctrlKey && e.key === "c") {
+      println(promptHTML() + esc(input.value) + "^C");
+      input.value = "";
+    } else if (e.ctrlKey && e.key === "l") {
+      e.preventDefault();
+      commands.clear();
+    }
+  });
+
+  function tabComplete() {
+    var parts = input.value.split(/\s+/);
+    var frag = parts[parts.length - 1];
+    if (parts.length <= 1) {
+      var names = Object.keys(commands).filter(function (n) { return n.startsWith(frag); });
+      if (names.length === 1) input.value = names[0] + " ";
+      else if (names.length > 1) println(names.join("  "), "dim");
+      return;
+    }
+    loadSlugs().then(function (posts) {
+      var matches = posts.map(function (p) { return p.slug; })
+        .filter(function (s) { return s.startsWith(frag); });
+      if (matches.length === 1) {
+        parts[parts.length - 1] = matches[0];
+        input.value = parts.join(" ") + " ";
+      } else if (matches.length > 1) {
+        println(matches.join("  "), "dim");
+      }
+    });
+  }
+
+  /* ---------- 编辑器模式 ---------- */
+  function openEditor(slug) {
+    return api("/admin/api/post/?slug=" + encodeURIComponent(slug)).then(function (d) {
+      currentSlug = slug;
+      // CRLF 文件在 textarea 读取时会被浏览器规范成 LF，这里提前统一，避免“未保存”误判
+      md.value = d.content.replace(/\r\n/g, "\n");
+      savedContent = md.value;
+      document.getElementById("edit-slug").textContent = slug;
+      document.getElementById("pv-note").textContent = "";
+      editStatus.textContent = "";
+      document.getElementById("preview").src = "/posts/" + slug + "/";
+      term.style.display = "none";
+      editor.style.display = "flex";
+      md.focus();
+    });
+  }
+
+  function closeEditor() {
+    if (md.value !== savedContent && !confirm("有未保存的修改，确定关闭？")) return;
+    editor.style.display = "none";
+    term.style.display = "block";
+    currentSlug = null;
+    slugsCache = null;
+    input.focus();
+    term.scrollTop = term.scrollHeight;
+  }
+
+  function savePost() {
+    if (!currentSlug) return;
+    if (!md.value.trim()) { editStatus.textContent = "内容不能为空"; return; }
+    editStatus.textContent = "保存中…";
+    api("/admin/api/save/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slug: currentSlug, content: md.value }),
+    }).then(function () {
+      savedContent = md.value;
+      editStatus.textContent = "✅ 已保存 " + new Date().toLocaleTimeString();
+      document.getElementById("preview").src = "/posts/" + currentSlug + "/";
+    }).catch(function (e) {
+      editStatus.textContent = "保存失败：" + e.message;
+    });
+  }
+
+  document.getElementById("btn-save").addEventListener("click", savePost);
+  document.getElementById("btn-reload").addEventListener("click", function () {
+    document.getElementById("preview").src = "/posts/" + currentSlug + "/";
+  });
+  document.getElementById("btn-reread").addEventListener("click", function () {
+    if (!currentSlug) return;
+    if (md.value !== savedContent && !confirm("有未保存的修改，从磁盘重读会丢失这些修改，继续？")) return;
+    api("/admin/api/post/?slug=" + encodeURIComponent(currentSlug)).then(function (d) {
+      md.value = d.content;
+      savedContent = d.content;
+      editStatus.textContent = "📂 已从磁盘重新读取 " + new Date().toLocaleTimeString();
+    }).catch(function (e) {
+      editStatus.textContent = "读取失败：" + e.message;
+    });
+  });
+  document.getElementById("btn-close").addEventListener("click", closeEditor);
+
+  md.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "s") { e.preventDefault(); savePost(); }
+  });
+
+  /* ---------- 删除确认 ---------- */
+  document.getElementById("confirm-yes").addEventListener("click", function () {
+    var slug = pendingDelete;
+    document.getElementById("confirmbox").style.display = "none";
+    pendingDelete = null;
+    if (!slug) return;
+    api("/admin/api/delete/", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slug: slug, confirm: true }),
+    }).then(function () {
+      slugsCache = null;
+      println("🗑 已删除 " + esc(slug) + "（git 历史可恢复）", "sys");
+    }).catch(function (e) { println(esc(e.message), "err"); });
+  });
+  document.getElementById("confirm-no").addEventListener("click", function () {
+    document.getElementById("confirmbox").style.display = "none";
+    pendingDelete = null;
+  });
+
+  /* ---------- 启动 ---------- */
+  println("Firefly 写作终端（dev only）", "sys");
+  println("输入 <span class='sys'>help</span> 查看命令，<span class='sys'>ls</span> 列出文章，<span class='sys'>new my-post 标题</span> 开始写作", "dim");
+  println("提示：给文章加密用 <span class='sys'>pass slug 密码 提示</span>，发布上线用 <span class='sys'>deploy</span>", "dim");
+  println("");
+  makeInputLine();
+})();
+</script>
+</body>
+</html>

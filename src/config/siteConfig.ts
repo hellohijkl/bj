@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Demo site",
 
 	// 站点 URL
-	site_url: "https://helloblog.de5.net",
+	site_url: "https://helloblog.88800001.xyz",
 
 	// 站点描述
 	description:
@@ -77,7 +77,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Firefly",
+		title: "Nikki",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
@@ -110,7 +110,7 @@ export const siteConfig: SiteConfig = {
 		// 追番页面开关
 		anime: false,
 		// 动态页面开关
-		dynamic: true,
+		dynamic: false,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航

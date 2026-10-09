@@ -50,6 +50,34 @@ export const friendsConfig: FriendLink[] = [
 		weight: 8,
 		enabled: true,
 	},
+	{
+		title: "千本圆",
+		imgurl: "https://blog.qianbenyuan.dpdns.org/assets/avatar.jpg",
+		desc: "千本圆",
+		siteurl: "https://blog.qianbenyuan.dpdns.org/",
+		tags: ["Blog"],
+		weight: 0,
+		enabled: true,
+	},
+	{
+		title: "iss-xx",
+		imgurl:
+			"https://github.com/iss-xx/picx-images-hosting/raw/master/头像.4xvac2bgrs.webp",
+		desc: "web安全菜鸟打怪升级日记",
+		siteurl: "https://www.iss-xx.xin/",
+		tags: ["Blog"],
+		weight: 0,
+		enabled: true,
+	},
+	{
+		title: "Zelia",
+		imgurl: "https://zelia.top/avatar.png",
+		desc: "唯有行动才能解决所有的不安",
+		siteurl: "https://zelia.top/",
+		tags: ["Blog"],
+		weight: 0,
+		enabled: true,
+	},
 ];
 
 // 获取启用的友链并进行排序
