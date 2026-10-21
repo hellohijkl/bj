@@ -8,11 +8,11 @@ category: MISC
 draft: false
 ---
 
-## 0.题目
+## 1.题目
 
 https://ctf2.dasctf.com/dashboard/practice/b9bbb32f-f186-458f-b90b-12440c0f6aea?tab=challenges
 
-## 1.snake
+## 2.snake
 
 1. 下载附件，解压得到一张snake的图片。
 
@@ -70,7 +70,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 5. flag{who_knew_serpent_cipher_existed}
 
-## 2.二维码
+## 3.二维码
 
 1. 下载附件，得到一个二维码
 
@@ -86,7 +86,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 4. flag{vjpw_wnoei}
 
-## 3.easycap
+## 4.easycap
 
 1. 下载附件，得到一个流量包
 
@@ -96,7 +96,7 @@ CTF{who_knew_serpent_cipher_existed}
 
 3. flag{385b87afc8671dee07550290d16a8071}
 
-## 4.镜子里面的世界
+## 5.镜子里面的世界
 
 1. 下载附件，得到一张图片。
 
@@ -150,7 +150,7 @@ flag{st3g0_saurus_wr3cks}
 
 https://blog.csdn.net/m0_75030189/article/details/136940462?ops_request_misc=elastic_search_misc&request_id=b0ae3e9436349818ffb241ff86913dc7&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-136940462-null-null.142^v102^pc_search_result_base4&utm_term=StegSolve%E4%BD%BF%E7%94%A8&spm=1018.2226.3001.4187
 
-## 5.N种方法解决
+## 6.N种方法解决
 
 1. 下载附件，得到一个KEY.exe
 
@@ -170,7 +170,7 @@ https://blog.csdn.net/m0_75030189/article/details/136940462?ops_request_misc=ela
 data:image/jpg;base64,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
 ```
 
-## 6.被嗅探的流量
+## 7.被嗅探的流量
 
 1. 下载附件，得到一个流量包
 
@@ -180,7 +180,7 @@ data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAYAAAB12js8AAAAAXNSR0IArs
 
 3. flag{da73d88936010da1eeeb36e945ec4b97}
 
-## 7.荷兰宽带数据泄露
+## 8.荷兰宽带数据泄露
 
 1. 下载附件，得到一个bin文件
 
@@ -204,7 +204,7 @@ https://link.gitcode.com/i/e7c71f64812bbf639f40eec7e0c77d86?uuid_tt_dd=10_186618
 
 https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc=&request_id=&biz_id=102&utm_term=RouterPassView&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-142511625.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187
 
-## 8.你竟然赶我走
+## 9.你竟然赶我走
 
 1. 下载附件，得到一个图片
 
@@ -216,7 +216,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 4. flag{stego_is_s0_bor1ing}
 
-## 9.zip伪加密
+## 10.zip伪加密
 
 1. 下载附件，得到一个zip
 
@@ -230,7 +230,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 3. flag{Adm1N-B2G-kU-SZIP}
 
-## 10.wireshark
+## 11.wireshark
 
 1. 下载附件，得到一个流量包
 
@@ -240,7 +240,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 3. flag{ffb7567a1d4f4abdffdb54e022f8facd}
 
-## 11.数据包中的线索
+## 12.数据包中的线索
 
 1. 下载附件，得到一个流量包
 
@@ -252,7 +252,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 3. flag{209acebf6324a09671abc31c869de72c}
 
-## 12.另外一个世界
+## 13.另外一个世界
 
 1. 下载附件，得到一张图片
 
@@ -280,7 +280,7 @@ https://blog.csdn.net/weixin_58038441/article/details/142511625?ops_request_misc
 
 3. flag{koekj3s}
 
-## 13.LSB
+## 14.LSB
 
 1. 下载附件，得到一张图片
 
@@ -298,7 +298,7 @@ savebin，后缀改为png，
 
 3. flag{1sb_i4_s0_Ea4y}}
 
-## 14.voip
+## 15.voip
 
 1. 下载附件，得到一个流量包
 
@@ -316,7 +316,7 @@ savebin，后缀改为png，
 
 VoIP(Voice over  Internet Protocol)，ip语音协议。音频与视频聊天通过将语音信号转换为数字数据并通过互联网或局域网进行传输，实现远程通信，提高了通信效率。我们常用的QQ通话，微信通话都是。
 
-## 15.金三胖
+## 16.金三胖
 
 1. 下载附件，得到一个gif
 
@@ -350,7 +350,7 @@ for i in range(total):
 print(f"全部帧已输出到 {out_folder}/")
 ```
 
-## 16.大白
+## 17.大白
 
 1. 下载附件，得到一个不完整的图片(修改宽高)
 
@@ -364,7 +364,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 3. flag{He1l0_d4_ba1}
 
-## 17.基础破解
+## 18.基础破解
 
 1. 下载附件，得到一个压缩包
 
@@ -376,7 +376,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 4. flag{70354300a5100ba78068805661b93a5c}
 
-## 18.ningen
+## 19.ningen
 
 1. 下载附件，得到一张图片
 
@@ -390,7 +390,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 4. flag{b025fc9ca797a67d2103bfbc407a6d5f}
 
-## 19.乌镇峰会种图
+## 20.乌镇峰会种图
 
 1. 下载附件，得到一张图片
 
@@ -400,7 +400,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 3. flag{97314e7864a8f62627b26f3f998c37f1}
 
-## 20.隐藏的钥匙
+## 21.隐藏的钥匙
 
 1. 下载附件，得到一张图片
 
@@ -410,7 +410,7 @@ print(f"全部帧已输出到 {out_folder}/")
 
 3. flag{377cbadda1eca2f2f73d36277781f00a}
 
-## 21.梅花香之苦寒来
+## 22.梅花香之苦寒来
 
 1. 下载附件，得到一张图片
 
@@ -456,7 +456,7 @@ print("已生成 qrcode.png")
 
 5. 扫码得到flag{40fc0a979f759c8892f4dc045e28b820}
 
-## 22.面具下的flag
+## 23.面具下的flag
 
 1. 下载附件，得到一张图片
 
@@ -484,7 +484,7 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 6. 拼接flag{N7F5_AD5_i5_funny!}
 
-## 23.[BJDCTF2020]鸡你太美
+## 24.[BJDCTF2020]鸡你太美
 
 1. 下载附件，得到一个压缩包
 
@@ -498,7 +498,7 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 3. flag{zhi_yin_you_are_beautiful}
 
-## 24.[BJDCTF2020]纳尼
+## 25.[BJDCTF2020]纳尼
 
 1. 下载附件，得到一张图片
 
@@ -512,7 +512,7 @@ more < where_is_flag_part_two.txt:flag_part_two_is_here.txt
 
 4. CTF{wang_bao_qiang_is_sad}
 
-## 25.[BJDCTF2020]一叶障目
+## 26.[BJDCTF2020]一叶障目
 
 1. 下载附件，得到一张图片
 
@@ -567,7 +567,7 @@ with open("fixed.png", "wb") as fout:
 print("输出 fixed.png")
 ```
 
-## 26.[HBNIS2018]来题中等的吧
+## 27.[HBNIS2018]来题中等的吧
 
 1. 下载附件，得到一张图片
 
@@ -579,7 +579,7 @@ print("输出 fixed.png")
 
 3. flag{alphalab}
 
-## 27.文件中的秘密
+## 28.文件中的秘密
 
 1. 下载附件，得到一张图片
 
@@ -593,7 +593,7 @@ print("输出 fixed.png")
 
 4. flag{870c5a72806115cb5439345d8b014396}
 
-## 28.从娃娃抓起
+## 29.从娃娃抓起
 
 1. 题目描述：伟人的一句话，标志着一个时代的开始。那句熟悉的话，改变了许多人的一生，为中国三十年来计算机产业发展铺垫了道路。两种不同的汉字编码分别代表了汉字信息化道路上的两座伟大里程碑。请将你得到的话转为md5提交，md5统一为32位小写。
 
@@ -607,7 +607,7 @@ print("输出 fixed.png")
 
 3. flag{3b4b5dccd2c008fe7e2664bd1bc19292}
 
-## 29.小易的U盘
+## 30.小易的U盘
 
 1. 下载附件，得到一个压缩包
 
@@ -625,7 +625,7 @@ print("输出 fixed.png")
 
 3. flag{29a0vkrlek3eu10ue89yug9y4r0wdu10}
 
-## 30.来首歌吧
+## 31.来首歌吧
 
 1. 下载附件，得到一个压缩包，里面一段音频
 
@@ -639,7 +639,7 @@ print("输出 fixed.png")
 
 3. flag{5BC925649CB0188F52E617D70929191C}
 
-## 31.黑客帝国
+## 32.黑客帝国
 
 1. 下载附件，得到一个压缩包
 
@@ -682,7 +682,7 @@ out.write(binascii.unhexlify(hex_data))
 out.close()
 ```
 
-## 32.[MRCTF2020]你能看懂音符吗
+## 33.[MRCTF2020]你能看懂音符吗
 
 1. 下载附件，得到一个压缩包
 
@@ -700,7 +700,7 @@ out.close()
 
 5. flag{thEse_n0tes_ArE_am@zing~}
 
-## 33.[HBNIS2018]caesar
+## 34.[HBNIS2018]caesar
 
 1. 下载附件，得到一个文本
 
@@ -716,7 +716,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 3. flag{flagiscaesar}
 
-## 34.[HBNIS2018]低个头
+## 35.[HBNIS2018]低个头
 
 1. 下载附件，得到一个文本
 
@@ -728,7 +728,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 3. flag{CTF}
 
-## 35.[GXYCTF2019]佛系青年
+## 36.[GXYCTF2019]佛系青年
 
 1. 下载附件，得到一个压缩包
 
@@ -746,7 +746,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 5. flag{w0_fo_ci_Be1}
 
-## 36.[BJDCTF2020]just_a_rar
+## 37.[BJDCTF2020]just_a_rar
 
 1. 下载附件，得到一个压缩包
 
@@ -762,7 +762,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 4. flag{Wadf_123}
 
-## 37.FLAG
+## 38.FLAG
 
 1. 下载附件，得到一张图片
 
@@ -776,7 +776,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 4. flag{dd0gf4c3tok3yb0ard4g41n~~~}
 
-## 38.假如给我三天光明
+## 39.假如给我三天光明
 
 1. 下载附件，得到一张图片
 
@@ -796,7 +796,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 5. flag{wpei08732?23dz}
 
-## 39.神秘龙卷风
+## 40.神秘龙卷风
 
 1. 下载附件，得到一个压缩包
 
@@ -808,7 +808,7 @@ https://blog.csdn.net/weixin_44307864/article/details/121729142?fromshare=blogde
 
 ![image.png](/images/blog/1787494905645_image.webp)
 
-## 40.[UTCTF2020]zero
+## 41.[UTCTF2020]zero
 
 1. 下载附件，得到一个文本
 
