@@ -124,8 +124,10 @@ for (const name of ciphers) {
   }
 }
 ```
+或者用本地工具得到flag![alt text](image-6.png)
 
 **第 5 步：看结果。** 只有一组能解出可读文本：
+
 
 | 算法 | 密码 | 结果 |
 | --- | --- | --- |

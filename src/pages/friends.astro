@@ -159,6 +159,7 @@ const description =
                 <div class="flex flex-wrap gap-1 mt-1">
                   {item.tags && item.tags.length > 0
                     ? item.tags
+                        .filter((t) => !(t === "Blog" && item.tags.length > 1))
                         .slice(0, 3)
                         .map((tag) => (
                           <span class="text-[0.65rem] px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 transition-colors duration-300">
